@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOBEL Group | Membangun Indonesia Sejak 1954</title>
+  <link rel="icon" type="image/png" href="./brand_assets/gobel_group/Gobel_All Logo_Primary.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ─── Neue Haas Grotesk (local trial fonts) ─── */
+    @font-face {
+      font-family: 'NHG';
+      src: url('./brand_assets/typography/neuehaasgrotdisp-55roman-trial.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NHG';
+      src: url('./brand_assets/typography/neuehaasgrotdisp-65medium-trial.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NHG';
+      src: url('./brand_assets/typography/neuehaasgrotdisp-75bold-trial.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NHG';
+      src: url('./brand_assets/typography/neuehaasgrotdisp-95black-trial.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NHGText';
+      src: url('./brand_assets/typography/neuehaasgrottext-55roman-trial.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NHGText';
+      src: url('./brand_assets/typography/neuehaasgrottext-65medium-trial.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NHGText';
+      src: url('./brand_assets/typography/neuehaasgrottext-75bold-trial.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    /* ─── Brand CSS Variables ─── */
+    :root {
+      --gold-shine:   #ffd580;
+      --gold-medal:   #b88846;
+      --gold-deep:    #c49a3c;
+      --gold-ore:     #945f26;
+      --gold-legacy:  #5e3e24;
+      --cream:        #fff3ec;
+      --cream-mid:    #f5e8d4;
+      --near-black:   #191919;
+      --dark-900:     #0f0f0f;
+      --dark-800:     #1a1a1a;
+      --dark-700:     #242424;
+      --mid-gray:     #f2f2f2;
+      --text-muted:   #888888;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'NHGText', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: var(--near-black);
+      color: var(--near-black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── Nav ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 72px;
+      background: var(--dark-900);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .nav-inner {
+      max-width: 1440px; margin: 0 auto;
+      height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+    }
+    .nav.scrolled {
+      background: rgba(15,15,15,0.97);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    .nav-logo img { height: 52px; width: auto; }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+    .nav-links a {
+      font-family: 'NHGText', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-shine); }
+    .nav-cta {
+      font-family: 'NHGText', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #56a443 0%, #1a512a 100%);
+      padding: 10px 24px;
+      text-decoration: none;
+      transition: filter 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+    /* ─── Hero ─── */
+    /* ── Hero Slider wrapper ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .hero-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .hero-slide {
+      flex: 0 0 100%;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    /* Slide 1 — GOBEL Group */
+    .hero-slide--gobel {
+      background: var(--dark-900);
+    }
+    /* Slide 2 — GoTrans */
+    .hero-slide--gotrans {
+      background: #07131f;
+    }
+    .gotrans-photo-bg {
+      position: absolute; inset: 0;
+      background-image: url('./brand_assets/photos/GLI_photo1.jpg');
+      background-size: cover;
+      background-position: center center;
+      filter: blur(1.5px) saturate(0.8);
+    }
+    /* Purple overlay for readability */
+    .gotrans-photo-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(90, 48, 155, 0.84);
+    }
+    /* Dot pattern removed — replaced by canvas particles */
+    /* GoTrans layout — matches reference: label top-left, then 2-col (headline | body) */
+    .gotrans-layout {
+      position: relative; z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding: 0 72px;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .gotrans-label {
+      font-family: 'NHGText', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.01em;
+      margin-bottom: 32px;
+    }
+    .gotrans-content-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .gotrans-headline {
+      font-family: 'NHG', 'Helvetica Neue', sans-serif;
+      font-weight: 900;
+      font-size: clamp(48px, 5.8vw, 92px);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin: 0;
+    }
+    .gotrans-body {
+      font-family: 'NHGText', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+      margin: 0 0 28px 0;
+    }
+    .gotrans-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'NHGText', sans-serif;
+      font-weight: 700; font-size: 13px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #F03F06;
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .gotrans-cta:hover { background: #d43605; transform: translateY(-2px); }
+    /* Slider navigation */
+    .hero-slider-nav {
+      position: absolute;
+      bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px;
+      z-index: 10;
+    }
+    .hero-dot {
+      width: 28px; height: 3px;
+      background: rgba(255,255,255,0.25);
+      border: none; cursor: pointer;
+      transition: background 0.3s ease, width 0.3s ease;
+      padding: 0;
+    }
+    .hero-dot.active { background: var(--gold-medal); width: 52px; }
+    .hero-arrow {
+      position: absolute; top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .hero-arrow:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.3); }
+    .hero-arrow--prev { left: 32px; }
+    .hero-arrow--next { right: 32px; }
+    /* Slide counter */
+    .hero-slide-counter {
+      position: absolute;
+      bottom: 40px; right: 48px;
+      font-family: 'NHGText', sans-serif;
+      font-size: 11px; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.3);
+      z-index: 10;
+    }
+    .hero-slide-counter .current { color: rgba(255,255,255,0.7); }
+    .hero-bg-grain {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+    .hero-bg-radial {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 50%, rgba(180,136,70,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 5% 80%, rgba(94,62,36,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 30% at 50% 10%, rgba(180,136,70,0.05) 0%, transparent 60%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      flex: 1;
+      padding: 0 48px;
+      padding-top: 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-content { padding: 80px 0; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'NHGText', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-medal);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 28px; height: 1px;
+      background: var(--gold-medal);
+    }
+    .hero-headline {
+      font-family: 'NHG', 'Helvetica Neue', sans-serif;
+      font-weight: 900;
+      font-size: clamp(52px, 5.5vw, 88px);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+    .hero-headline .gold-word { color: var(--gold-deep); }
+    .hero-sub {
+      font-family: 'NHGText', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'NHGText', sans-serif;
+      font-weight: 700; font-size: 13px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--near-black);
+      background: var(--gold-deep);
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-shine); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'NHGText', sans-serif;
+      font-weight: 500; font-size: 13px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold-medal);
+      color: var(--gold-shine);
+      transform: translateY(-2px);
+    }
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 80px 0;
+      position: relative;
+    }
+    .hero-lockup-img {
+      width: 100%;
+      max-width: 620px;
+      filter: drop-shadow(0 24px 80px rgba(180,136,70,0.25));
+      animation: float 6s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero-tagline-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 2px solid var(--gold-medal);
+      padding: 20px 28px;
+      max-width: 620px;
+      width: 100%;
+      text-align: center;
+    }
+    .hero-tagline-card p {
+      font-family: 'NHGText', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+    }
+    .hero-tagline-card strong {
+      color: var(--gold-shine);
+      font-style: normal;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px; left: 48px;
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'NHGText', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      z-index: 1;
+    }
+    .hero-scroll-hint::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ─── Stats Bar ─── */
+    .stats-bar {
+      background: var(--gold-deep);
+      padding: 0;
+    }
+    .stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 36px 0;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      padding-left: 40px;
+      position: relative;
+    }
+    .stat-item:first-child { padding-left: 0; border-left: none; }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: 44px;
+      line-height: 1;
+      color: var(--near-black);
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: 'NHGText', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--near-black);
+    }
+
+    /* ─── About / Mission ─── */
+    .about {
+      background: #0b0906;
+      padding: 120px 48px;
+    }
+    .about-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+      text-align: center;
+    }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'NHGText', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-ore);
+      margin-bottom: 20px;
+    }
+    .section-tag::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--gold-ore);
+    }
+    .about-headline {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: clamp(40px, 3.5vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .about-headline .gold-span { color: var(--gold-deep); }
+    .about-body {
+      font-family: 'NHGText', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 48px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Stats grid — 4 items in a row */
+    .about-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 36px 72px;
+    }
+    .stat-block {}
+    .stat-value {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: clamp(44px, 4.2vw, 68px);
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+    .stat-value .stat-suffix {
+      font-size: 0.42em;
+      font-weight: 700;
+      color: var(--gold-deep);
+      letter-spacing: 0;
+    }
+    .stat-value .stat-prefix {
+      font-size: 0.38em;
+      font-weight: 700;
+      color: var(--gold-deep);
+      letter-spacing: 0;
+      margin-right: 2px;
+    }
+    .about .stat-label {
+      font-family: 'NHGText', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-medal);
+      margin-top: 6px;
+    }
+    .stat-desc {
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.3);
+      margin-top: 3px;
+    }
+    /* Globe */
+    .about-globe-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    #gobel-globe {
+      display: block;
+      cursor: grab;
+      border-radius: 50%;
+    }
+    #gobel-globe:active { cursor: grabbing; }
+    /* keep old class stubs to avoid breaking responsive rules */
+    .about-visual { position: relative; }
+    .about-offset-card { display: none; }
+    .crest-block { display: none; }
+    .crest-text p {
+      font-family: 'NHGText', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    /* ─── Business Sectors ─── */
+    .sectors {
+      background: var(--dark-900);
+      padding: 120px 48px;
+    }
+    .sectors-inner { max-width: 1440px; margin: 0 auto; }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+    }
+    .section-headline {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: clamp(36px, 3vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .section-desc {
+      max-width: 380px;
+      font-family: 'NHGText', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .sector-card {
+      background: var(--dark-800);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .sector-card:hover { background: var(--dark-700); }
+    .sector-card:hover .sector-icon-wrap { border-color: var(--gold-medal); }
+    .sector-card:hover .sector-arrow { opacity: 1; transform: translateX(0); }
+    .sector-icon-wrap {
+      width: 64px; height: 64px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+      transition: border-color 0.3s;
+    }
+    .sector-icon-wrap svg { width: 32px; height: 32px; }
+    .sector-name {
+      font-family: 'NHG', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .sector-desc {
+      font-family: 'NHGText', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 28px;
+    }
+    .sector-tag {
+      font-family: 'NHGText', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-medal);
+    }
+    .sector-arrow {
+      position: absolute; top: 48px; right: 40px;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.3s, transform 0.3s;
+      color: var(--gold-medal);
+      font-size: 20px;
+    }
+
+    /* ─── 70th Anniversary ─── */
+    .anniversary {
+      background: #0e0c09;
+      position: relative;
+      overflow: hidden;
+      min-height: 640px;
+    }
+
+    /* ── Photo collage panel (right side, uses brand guideline image) ── */
+    .anniv-photo-panel {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 62%;
+      background-image: url('./brand_assets/photos/gobel_70years_innovation.png');
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 1s ease 0.15s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    }
+    .anniv-photo-panel.in-view { opacity: 1; transform: translateX(0); }
+
+    /* left-to-dark blend so logo+text reads cleanly */
+    .anniv-photo-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, #0e0c09 0%, rgba(14,12,9,0.65) 22%, rgba(14,12,9,0.1) 55%, rgba(14,12,9,0.35) 100%),
+        linear-gradient(to bottom, #0e0c09 0%, transparent 12%, transparent 80%, #0e0c09 100%),
+        linear-gradient(to top, #0e0c09 0%, transparent 10%);
+    }
+
+    /* ── Warm ambient glow behind photos ── */
+    .anniversary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 72% 45%, rgba(200,162,72,0.07) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── Main content layout ── */
+    .anniv-layout {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      min-height: 540px;
+      padding: 120px 72px 120px 72px;
+    }
+
+    /* GOBEL crest — bottom */
+    .anniv-crest-wrap {
+      display: block;
+      margin-top: 32px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
+    }
+    .anniv-crest-wrap.in-view { opacity: 1; transform: translateY(0); }
+    .anniv-crest {
+      height: 92px;
+      width: auto;
+      display: block;
+      /* nudge left to cancel the PNG's built-in left whitespace padding */
+      margin-left: -18px;
+    }
+
+    /* Two small body text columns */
+    .anniv-body-cols {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 440px;
+      margin-top: auto;
+      padding-top: 56px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.65s ease 0.35s, transform 0.65s ease 0.35s;
+    }
+    .anniv-body-cols.in-view { opacity: 1; transform: translateY(0); }
+    .anniv-body-col {
+      font-family: 'NHGText', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+    }
+    .anniv-founder-sig {
+      font-family: 'NHGText', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-top: 12px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .anniv-founder-sig strong {
+      display: block;
+      color: #c49a3c;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .anniv-founder-sig span {
+      display: block;
+      color: #ffffff;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    /* fine rule separating cols from big type */
+    .anniv-rule {
+      width: 100%;
+      max-width: 440px;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin-top: 14px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+    }
+    .anniv-rule.in-view { transform: scaleX(1); }
+
+    /* ── Title typography — now at top ── */
+    .anniv-big-type {
+      margin-top: 0;
+      line-height: 0.88;
+    }
+    .anniv-type-line {
+      display: block;
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: 57px;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anniv-type-line:nth-child(1) { transition-delay: 0.3s; }
+    .anniv-type-line:nth-child(2) { transition-delay: 0.46s; color: #c49a3c; }
+    .anniv-type-line.in-view { clip-path: inset(0 0 0% 0); }
+
+    @media (max-width: 900px) {
+      .anniv-photo-panel { width: 100%; opacity: 0.35; }
+      .anniv-layout { padding: 36px 32px 0; }
+      .anniv-body-cols { max-width: 100%; }
+      .anniv-type-line { font-size: clamp(36px, 10vw, 57px); }
+      .anniv-crest { height: 56px; }
+    }
+
+    /* ─── News ─── */
+    .news {
+      background-color: #0e0c09;
+      background-image: url('./brand_assets/backgrounds/GOBEL_Virtual Background_70thBlack.jpg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: repeat;
+      image-rendering: -webkit-optimize-contrast;
+      position: relative;
+      padding: 120px 48px;
+    }
+    /* dark veil so illustration reads as texture */
+    .news::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(14,12,9,0.78);
+      pointer-events: none;
+    }
+    .news-inner { max-width: 1440px; margin: 0 auto; position: relative; z-index: 1; }
+    .news-header { margin-bottom: 56px; }
+    /* title highlight bar */
+    .news-title-highlight {
+      display: inline-block;
+      position: relative;
+    }
+    .news-title-highlight::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold-medal), var(--gold-shine));
+      border-radius: 2px;
+    }
+    /* ── Bento grid: left big card + right 2×2 ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      grid-template-rows: minmax(260px,1fr) minmax(260px,1fr);
+      gap: 20px;
+    }
+    .news-card {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .news-card:hover {
+      box-shadow: 0 20px 56px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.06);
+      transform: translateY(-3px);
+    }
+    .news-card:hover .news-img { transform: scale(1.05); }
+    /* featured spans both rows on the left */
+    .news-card--featured {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+    .news-card--featured .news-img-wrap { flex: 1; min-height: 0; aspect-ratio: unset; }
+    .news-card--featured { display: flex; flex-direction: column; }
+    .news-img-wrap {
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: var(--cream-mid);
+      flex-shrink: 0;
+    }
+    .news-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .news-body { padding: 24px 24px 28px; display: flex; flex-direction: column; }
+    .news-card--featured .news-body { padding: 28px 32px 36px; }
+    .news-cat {
+      font-family: 'NHGText', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-ore);
+      margin-bottom: 10px;
+    }
+    .news-title {
+      font-family: 'NHG', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.35;
+      color: var(--near-black);
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .news-card--featured .news-title { font-size: 26px; line-height: 1.25; margin-bottom: 14px; }
+    .news-excerpt {
+      font-family: 'NHGText', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #666;
+      margin-bottom: 18px;
+    }
+    .news-meta {
+      font-family: 'NHGText', sans-serif;
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 0.04em;
+      margin-top: auto;
+    }
+    .news-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-ore);
+      text-decoration: none;
+      margin-top: 14px;
+      transition: gap 0.2s;
+    }
+    .news-link:hover { gap: 10px; }
+
+    /* ─── CSR / Sustainability ─── */
+    .csr {
+      background: #040f07;
+      padding: 120px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Deep atmospheric green gradient layers */
+    .csr::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 55% 70% at 80% 20%, rgba(86,164,67,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 15% 80%, rgba(26,81,42,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 50% 50%, rgba(4,20,8,0.6) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    /* Beams canvas */
+    #csr-beams {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+      filter: blur(2px);
+    }
+    .csr-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .csr-header { margin-bottom: 40px; }
+    /* Override decorative line color inside CSR */
+    .about .gold-line { margin-left: auto; margin-right: auto; }
+    .about .section-tag { justify-content: center; }
+    .csr .gold-line { background: #1a512a; }
+    .csr .section-tag::before { background: #1a512a; }
+    /* ── Bento grid ── */
+    .csr-bento {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      grid-template-rows: minmax(148px,auto) minmax(190px,auto) minmax(190px,auto);
+      gap: 16px;
+    }
+    .csr-cell {
+      border: 1px solid rgba(86,164,67,0.12);
+      padding: 36px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .csr-cell:hover { border-color: rgba(86,164,67,0.32); background: rgba(86,164,67,0.03); }
+    /* Headline — spans full left column */
+    .csr-cell--headline {
+      grid-column: 1;
+      grid-row: 1 / 4;
+      background: rgba(255,255,255,0.025);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px;
+      gap: 0;
+    }
+    .csr-headline {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: clamp(34px, 2.8vw, 50px);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .csr-headline .gold { color: #56a443; }
+    .csr-body {
+      font-family: 'NHGText', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+    }
+    .csr-pledge {
+      border-top: 1px solid rgba(86,164,67,0.15);
+      padding-top: 24px;
+      margin-top: auto;
+    }
+    .csr-pledge-text {
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.65;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+    /* Stat cells — shine border */
+    .csr-cell--stat {
+      background: rgba(86,164,67,0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 8px;
+      border: none;
+      position: relative;
+    }
+    /* Rotating shine border — green tones */
+    .csr-cell--stat::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      background: radial-gradient(
+        transparent, transparent,
+        #a8e496, #56a443, #1a512a,
+        transparent, transparent
+      );
+      background-size: 400% 400%;
+      animation: csr-stat-shine 14s linear infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .csr-cell--stat:hover::before { animation-duration: 7s; }
+    @keyframes csr-stat-shine {
+      0%   { background-position: 0%   0%;   }
+      25%  { background-position: 100% 0%;   }
+      50%  { background-position: 100% 100%; }
+      75%  { background-position: 0%   100%; }
+      100% { background-position: 0%   0%;   }
+    }
+    .csr-stat-num {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      color: #7ccc68;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .csr-stat-label {
+      font-family: 'NHGText', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.5;
+    }
+    /* Pillar cells */
+    .csr-cell--pillar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .csr-pillar-icon-wrap {
+      font-size: 22px;
+      width: 42px; height: 42px;
+      background: rgba(86,164,67,0.12);
+      border: 1px solid rgba(86,164,67,0.28);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      flex-shrink: 0;
+    }
+    .csr-pillar-title {
+      font-family: 'NHG', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .csr-pillar-body {
+      font-family: 'NHGText', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.65;
+      flex: 1;
+    }
+    /* unused legacy — kept for bar animation JS */
+    .csr-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1a512a, #56a443);
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* ─── Careers Banner ─── */
+    .careers {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .careers-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./brand_assets/guidelines/Gobel Group_Corporate Identity Manual_Eng_v2-page-00045.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+      filter: brightness(0.55) saturate(0.7);
+    }
+    .careers:hover .careers-bg { transform: scale(1.0); }
+    .careers-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.18) 40%, rgba(5,5,5,0.18) 60%, rgba(5,5,5,0.72) 100%),
+        linear-gradient(to bottom, rgba(5,5,5,0.45) 0%, transparent 30%, transparent 70%, rgba(5,5,5,0.55) 100%);
+    }
+    .careers-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 96px 48px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+    }
+    .careers-tagline {
+      font-family: 'NHG', sans-serif;
+      font-weight: 500;
+      font-size: clamp(22px, 2.4vw, 36px);
+      color: rgba(255,255,255,0.92);
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+    }
+    .careers-link {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: rgba(255,255,255,0.6);
+      transition: text-decoration-color 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+    .careers-link:hover {
+      color: #56a443;
+      text-decoration-color: #56a443;
+    }
+
+    /* ─── Business Fields (Marquee) ─── */
+    .partners {
+      background: #ffffff;
+      padding: 72px 0;
+      border-top: 1px solid #ebebeb;
+      overflow: hidden;
+    }
+    .marquee-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 36px 0;
+    }
+    /* fade edges */
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; z-index: 2;
+      width: 160px;
+      pointer-events: none;
+    }
+    .marquee-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #fff 0%, transparent 100%);
+    }
+    .marquee-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #fff 0%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      /* left-to-right: starts at -50% of its own width, ends at 0 */
+      animation: marquee-ltr 28s linear infinite;
+      will-change: transform;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee-ltr {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0%); }
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 56px;
+      border-right: 1px solid #ebebeb;
+      flex-shrink: 0;
+    }
+    .marquee-item:last-child { border-right: none; }
+    .marquee-logo {
+      height: 44px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      display: block;
+      filter: opacity(0.85);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+    .marquee-item:hover .marquee-logo {
+      filter: opacity(1);
+      transform: scale(1.06);
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      background: var(--dark-900);
+      padding: 80px 48px 40px;
+      border-top: 3px solid var(--gold-ore);
+    }
+    .footer-inner { max-width: 1440px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 40px;
+    }
+    .footer-brand {}
+    .footer-logo { height: 56px; margin-bottom: 24px; }
+    .footer-tagline {
+      font-family: 'NHGText', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.35);
+      max-width: 280px;
+      margin-bottom: 28px;
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 13px;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .social-btn:hover { border-color: var(--gold-medal); color: var(--gold-shine); opacity: 1; }
+    .social-btn img {
+      width: 20px; height: 20px;
+      object-fit: contain;
+      display: block;
+      opacity: 0.55;
+      transition: opacity 0.2s;
+    }
+    .social-btn:hover img { opacity: 1; }
+    .footer-col-title {
+      font-family: 'NHGText', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-family: 'NHGText', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold-shine); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a {
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ─── Divider line ─── */
+    .gold-line {
+      width: 40px; height: 2px;
+      background: var(--gold-deep);
+      margin-bottom: 20px;
+    }
+
+    /* ─── Mouse spotlight overlay ─── */
+    #spotlight-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      will-change: background;
+    }
+
+    /* ─── Scroll reveal ─── */
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .hero-inner, .about-inner, .anniversary-inner,
+      .csr-inner, .footer-top { grid-template-columns: 1fr; }
+      .hero-visual { align-items: center; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .about-offset-card { position: static; margin-top: 16px; max-width: 100%; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero-inner { padding: 0 24px; }
+      .sectors-grid, .stats-inner, .news-grid,
+      .csr-pillars, .footer-top { grid-template-columns: 1fr; }
+      .about, .sectors, .anniversary, .csr, .news, .footer { padding: 80px 24px; }
+      .anniversary-left, .anniversary-right { padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" alt="GOBEL Group" />
+    </div>
+    <div class="nav-links">
+      <a href="#anniversary">About Us</a>
+      <a href="#sectors">Our Business</a>
+      <a href="#news">Newsroom</a>
+      <a href="#csr">Sustainability</a>
+      <a href="#careers">Career</a>
+    </div>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section class="hero" id="heroSlider">
+  <div class="hero-track" id="heroTrack">
+
+    <!-- ── Slide 1: GOBEL Group ── -->
+    <div class="hero-slide hero-slide--gobel">
+      <canvas id="hero-particles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+      <div class="hero-bg-grain"></div>
+      <div class="hero-bg-radial"></div>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow">Membangun Indonesia Sejak 1954</div>
+          <h1 class="hero-headline">
+            <span class="gold-word">Empowering</span><br />
+            Indonesia's<br />
+            Future
+          </h1>
+          <p class="hero-sub">
+            GOBEL Group is one of Indonesia's most trusted and enduring conglomerates —
+            spanning electronics, food &amp; beverage, logistics, and beyond, with 70 years
+            of dedicated service to the nation.
+          </p>
+          <div class="hero-actions">
+            <a href="#sectors" class="btn-primary">
+              Explore Our Business
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#anniversary" class="btn-outline">Our Story</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img
+            src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png"
+            alt="GOBEL 70th Anniversary"
+            class="hero-lockup-img"
+          />
+          <div class="hero-tagline-card">
+            <p><strong>"GOBEL Mengabdi untuk Negeri"</strong> — Seven decades of building
+            industries, empowering communities, and shaping the future of Indonesia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Slide 2: GoTrans Logistics ── -->
+    <div class="hero-slide hero-slide--gotrans">
+      <div class="gotrans-photo-bg"></div>
+      <canvas id="gotrans-particles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+      <div class="gotrans-layout">
+        <div class="gotrans-label">GoTrans Logistics International</div>
+        <div class="gotrans-content-cols">
+          <div class="gotrans-col-left">
+            <h1 class="gotrans-headline">
+              Your Trusted<br />Logistic<br />Partner
+            </h1>
+          </div>
+          <div class="gotrans-col-right">
+            <p class="gotrans-body">
+              Founded in 2009, PT Gotrans Logistics International is part of Gobel Group, a business group that has pioneered industries in Indonesia for nearly seven decades. Leveraging this legacy and network, Gotrans provides comprehensive and reliable logistics services with a focus on efficiency, accuracy, and added value — serving customers across Indonesia and beyond.
+            </p>
+            <a href="#sectors" class="gotrans-cta">
+              Explore Our Business
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /hero-track -->
+
+  <!-- Shared scroll hint -->
+  <div class="hero-scroll-hint">Scroll to Explore</div>
+
+  <!-- Dot navigation -->
+  <div class="hero-slider-nav">
+    <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+  </div>
+
+  <!-- Prev / Next arrows -->
+  <button class="hero-arrow hero-arrow--prev" id="heroPrev" aria-label="Previous slide">
+    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+      <path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="hero-arrow hero-arrow--next" id="heroNext" aria-label="Next slide">
+    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+      <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Slide counter -->
+  <div class="hero-slide-counter">
+    <span class="current" id="heroCurrentNum">01</span> / 02
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════ STATS BAR ═══════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-number">70+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.1s">
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Business Subsidiaries</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.2s">
+      <div class="stat-number">10K+</div>
+      <div class="stat-label">Dedicated Employees</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.3s">
+      <div class="stat-number">34</div>
+      <div class="stat-label">Provinces Reached</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ 70TH ANNIVERSARY ═══════════════════════════ -->
+<section class="anniversary" id="anniversary">
+
+  <!-- Photo collage panel (right side, cropped from brand guidelines) -->
+  <div class="anniv-photo-panel" id="annivPhotoPanel"></div>
+
+  <!-- Content layer -->
+  <div class="anniv-layout">
+
+    <!-- Title typography — top -->
+    <div class="anniv-big-type">
+      <span class="anniv-type-line" id="annivLine1">Letter From</span>
+      <span class="anniv-type-line" id="annivLine2">Our Founder</span>
+    </div>
+
+    <!-- Founder letter -->
+    <div class="anniv-body-cols" id="annivBodyCols">
+      <p class="anniv-body-col">
+        Seventy years ago, we started with a single vision: to contribute to Indonesia through industry.
+      </p>
+      <p class="anniv-body-col">
+        From our first radio assembly to a diversified group spanning electronics, food, logistics, healthcare, and beyond — every decision has been guided by our seven founding principles.
+      </p>
+      <p class="anniv-body-col">
+        We did not build Gobel Group for profit alone. We built it for Indonesia, for the people of Nusantara, for generations to come.
+      </p>
+      <div class="anniv-founder-sig">
+        <strong>Thayeb Mohammad Gobel</strong>
+        <span>Founder, Gobel Group</span>
+      </div>
+    </div>
+
+    <!-- GOBEL 70th logo — bottom -->
+    <div class="anniv-crest-wrap" id="annivCrest">
+      <img
+        src="./brand_assets/70th_logo/70thGobel_Logo_70thTertiary.png"
+        alt="GOBEL Group 70th Anniversary"
+        class="anniv-crest"
+      />
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ABOUT / GOBEL IN NUMBERS ═══════════════════════════ -->
+<section class="about" id="about">
+  <div class="about-inner">
+
+    <!-- Left: Stats -->
+    <div class="reveal">
+      <div class="section-tag">Gobel in Numbers</div>
+      <div class="gold-line"></div>
+      <h2 class="about-headline">
+        Heritage of <span class="gold-span">Seven Decades</span>
+      </h2>
+      <p class="about-body">
+        From a single electronics company, GOBEL Group grew into a national conglomerate
+        touching every aspect of Indonesian life across seven decades of dedicated service.
+      </p>
+      <div class="about-stats">
+        <div class="stat-block reveal">
+          <div class="stat-value">70<span class="stat-suffix">+</span></div>
+          <div class="stat-label">Years</div>
+          <div class="stat-desc">Heritage &amp; National Leadership</div>
+        </div>
+        <div class="stat-block reveal" style="transition-delay:0.05s">
+          <div class="stat-value">50<span class="stat-suffix">K+</span></div>
+          <div class="stat-label">Employees</div>
+          <div class="stat-desc">Workforce Across Indonesia</div>
+        </div>
+        <div class="stat-block reveal" style="transition-delay:0.1s">
+          <div class="stat-value">40<span class="stat-suffix">+</span></div>
+          <div class="stat-label">Business Lines</div>
+          <div class="stat-desc">Diversified Business Portfolio</div>
+        </div>
+        <div class="stat-block reveal" style="transition-delay:0.15s">
+          <div class="stat-value">27</div>
+          <div class="stat-label">Provinces</div>
+          <div class="stat-desc">Operational Reach Nusantara</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Globe below stats -->
+    <div class="about-globe-wrap reveal" style="transition-delay:0.2s">
+      <canvas id="gobel-globe"></canvas>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BUSINESS SECTORS ═══════════════════════════ -->
+<section class="sectors" id="sectors">
+  <div class="sectors-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-tag" style="color:var(--gold-medal)">What We Do</div>
+        <div class="gold-line"></div>
+        <h2 class="section-headline">Our Business Sectors</h2>
+      </div>
+      <p class="section-desc">
+        A diversified group of companies working across key industries that power
+        Indonesia's economy and everyday life.
+      </p>
+    </div>
+    <div class="sectors-grid">
+
+      <!-- Electronics -->
+      <div class="sector-card reveal">
+        <span class="sector-arrow">→</span>
+        <div class="sector-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
+            <rect x="2" y="6" width="28" height="18" rx="1"/>
+            <line x1="9" y1="28" x2="23" y2="28"/>
+            <line x1="16" y1="24" x2="16" y2="28"/>
+            <rect x="6" y="10" width="20" height="10" rx="0.5"/>
+          </svg>
+        </div>
+        <div class="sector-name">Consumer Electronics</div>
+        <p class="sector-desc">From television sets to home appliances, delivering quality technology to Indonesian households for decades.</p>
+        <div class="sector-tag">National · Panasonic</div>
+      </div>
+
+      <!-- Food & Bev -->
+      <div class="sector-card reveal" style="transition-delay:0.1s">
+        <span class="sector-arrow">→</span>
+        <div class="sector-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
+            <path d="M10 4v8a6 6 0 0 0 12 0V4"/>
+            <line x1="16" y1="18" x2="16" y2="28"/>
+            <line x1="10" y1="28" x2="22" y2="28"/>
+            <line x1="14" y1="4" x2="14" y2="10"/>
+            <line x1="18" y1="4" x2="18" y2="10"/>
+          </svg>
+        </div>
+        <div class="sector-name">Food &amp; Beverage</div>
+        <p class="sector-desc">Bringing authentic Indonesian flavors and quality food brands to tables across the archipelago and beyond.</p>
+        <div class="sector-tag">Châteraisé · Food Processing</div>
+      </div>
+
+      <!-- Logistics -->
+      <div class="sector-card reveal" style="transition-delay:0.2s">
+        <span class="sector-arrow">→</span>
+        <div class="sector-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
+            <rect x="2" y="14" width="20" height="10" rx="1"/>
+            <path d="M22 18h6l2 4v4h-8V18z"/>
+            <circle cx="7" cy="26" r="2"/>
+            <circle cx="25" cy="26" r="2"/>
+            <line x1="2" y1="18" x2="22" y2="18"/>
+          </svg>
+        </div>
+        <div class="sector-name">Logistics &amp; Distribution</div>
+        <p class="sector-desc">Moving goods and connecting industries across Indonesia with reliable, efficient supply-chain solutions.</p>
+        <div class="sector-tag">GOBEL Logistic · Pan-Indonesia</div>
+      </div>
+
+      <!-- Property -->
+      <div class="sector-card reveal" style="transition-delay:0.05s">
+        <span class="sector-arrow">→</span>
+        <div class="sector-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
+            <path d="M4 28V14L16 4l12 10v14H4z"/>
+            <rect x="12" y="18" width="8" height="10"/>
+            <line x1="4" y1="28" x2="28" y2="28"/>
+          </svg>
+        </div>
+        <div class="sector-name">Property &amp; Real Estate</div>
+        <p class="sector-desc">Developing modern commercial and residential properties that shape Indonesia's urban landscape.</p>
+        <div class="sector-tag">Commercial · Residential</div>
+      </div>
+
+      <!-- Infrastructure -->
+      <div class="sector-card reveal" style="transition-delay:0.15s">
+        <span class="sector-arrow">→</span>
+        <div class="sector-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
+            <rect x="8" y="8" width="16" height="20" rx="1"/>
+            <rect x="12" y="12" width="4" height="4"/>
+            <rect x="18" y="12" width="4" height="4"/>
+            <rect x="12" y="20" width="4" height="4"/>
+            <rect x="18" y="20" width="4" height="4"/>
+            <path d="M8 8l8-6 8 6"/>
+          </svg>
+        </div>
+        <div class="sector-name">Infrastructure &amp; Manufacturing</div>
+        <p class="sector-desc">Building the foundational industries and manufacturing capabilities that power Indonesia's economic growth.</p>
+        <div class="sector-tag">Industrial · Manufacturing</div>
+      </div>
+
+      <!-- Telecoms -->
+      <div class="sector-card reveal" style="transition-delay:0.25s">
+        <span class="sector-arrow">→</span>
+        <div class="sector-icon-wrap">
+          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
+            <path d="M4 28a20 20 0 0 1 24 0"/>
+            <path d="M8 22a13 13 0 0 1 16 0"/>
+            <path d="M12 16a7 7 0 0 1 8 0"/>
+            <circle cx="16" cy="28" r="1.5" fill="var(--gold-medal)"/>
+          </svg>
+        </div>
+        <div class="sector-name">Telecommunications</div>
+        <p class="sector-desc">Connecting Indonesia through technology and communications infrastructure for a more connected future.</p>
+        <div class="sector-tag">Connectivity · Technology</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BUSINESS FIELDS ═══════════════════════════ -->
+<section class="partners">
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <!-- Set A -->
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/panasonic_logo.png" alt="Panasonic" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/chateraise_logo.png" alt="Châteraisé" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/gotrans_logo.png" alt="GoTrans Logistics" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/gobel_foundation_logo.png" alt="Matsushita Gobel Foundation" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/gobel_group/Gobel_All Logo_WordMark-Horizontal-Gold.png" alt="GOBEL Group" class="marquee-logo" />
+      </div>
+      <!-- Set B (duplicate for seamless loop) -->
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/panasonic_logo.png" alt="Panasonic" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/chateraise_logo.png" alt="Châteraisé" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/gotrans_logo.png" alt="GoTrans Logistics" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/business_fields/gobel_foundation_logo.png" alt="Matsushita Gobel Foundation" class="marquee-logo" />
+      </div>
+      <div class="marquee-item">
+        <img src="./brand_assets/gobel_group/Gobel_All Logo_WordMark-Horizontal-Gold.png" alt="GOBEL Group" class="marquee-logo" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ NEWS ═══════════════════════════ -->
+<section class="news" id="news">
+  <div class="news-inner">
+    <div class="news-header reveal">
+      <div class="section-tag" style="color:var(--gold-ore)">Latest Updates</div>
+      <div class="gold-line"></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <h2 style="font-family:'NHG',sans-serif;font-weight:900;font-size:clamp(36px,3vw,52px);letter-spacing:-0.03em;color:#fff"><span class="news-title-highlight">Newsroom</span></h2>
+        <a href="#" class="news-link" style="color:var(--gold-ore)">View All News →</a>
+      </div>
+    </div>
+    <div class="news-grid">
+
+      <!-- Featured — large left card spanning 2 rows -->
+      <div class="news-card news-card--featured reveal">
+        <div class="news-img-wrap">
+          <img src="https://instagram.fcgk27-2.fna.fbcdn.net/v/t51.82787-15/552957674_18383166628131566_4476258799161869200_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzcyODM5NDQxNjA3MjkxODU5OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkxMC5zZHIuQzMifQ%3D%3D&_nc_ohc=H8x_4f3dRZwQ7kNvwGdiaIk&_nc_oc=AdkNFUlc-DY1kYRgU5BfJdJv637vV3ChhkX8bxwT4qmEJ7P6EV-0lLjlDzuh2DfY0a0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fcgk27-2.fna&_nc_gid=LSFoQxAlDz1Im_Ja22O7Vg&_nc_ss=8&oh=00_AfyuhgyFVZfrVDIxAa_hTxB4LIKSMZz6z8t67aNQ1a8_HQ&oe=69B6E645" alt="GOBEL 70th Anniversary" class="news-img" />
+        </div>
+        <div class="news-body">
+          <div class="news-cat">Company News</div>
+          <h3 class="news-title">GOBEL Group Celebrates 70th Anniversary with Grand National Event</h3>
+          <p class="news-excerpt">Marking seven decades of dedicated service to Indonesia, GOBEL Group commemorates its founding anniversary with a nationwide celebration, reaffirming its commitment to building the nation.</p>
+          <div class="news-meta">March 2025 · 5 min read</div>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 — top right -->
+      <div class="news-card reveal">
+        <div class="news-img-wrap">
+          <img src="./brand_assets/photos/GLI_photo2.jpg" alt="GoTrans Logistics" class="news-img" />
+        </div>
+        <div class="news-body">
+          <div class="news-cat">Business</div>
+          <h3 class="news-title">GoTrans Logistics Expands Network to Eastern Indonesia</h3>
+          <div class="news-meta">February 2025 · 3 min read</div>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 — top far right -->
+      <div class="news-card reveal">
+        <div class="news-img-wrap">
+          <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/0b23fb80-91ff-4f08-a86c-bd9f94a730b7_gobiz-dashboard-image_1761108166044.jpg" alt="Châteraisé Partnership" class="news-img" />
+        </div>
+        <div class="news-body">
+          <div class="news-cat">Partnership</div>
+          <h3 class="news-title">Châteraisé Opens 20 New Outlets Across Java & Bali</h3>
+          <div class="news-meta">February 2025 · 3 min read</div>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Card 4 — bottom right -->
+      <div class="news-card reveal">
+        <div class="news-img-wrap">
+          <img src="./brand_assets/backgrounds/GOBEL_Digital Background_70yhWhite 1920x1080.jpg" alt="GOBEL Foundation" class="news-img" />
+        </div>
+        <div class="news-body">
+          <div class="news-cat">Sustainability</div>
+          <h3 class="news-title">GOBEL Foundation Launches Skills Program for 5,000 Youth</h3>
+          <div class="news-meta">January 2025 · 4 min read</div>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+      <!-- Card 5 — bottom far right -->
+      <div class="news-card reveal">
+        <div class="news-img-wrap">
+          <img src="https://cdn.antaranews.com/cache/1200x800/2023/03/04/IMG-20230304-WA0002_1.jpg" alt="Panasonic Innovation" class="news-img" />
+        </div>
+        <div class="news-body">
+          <div class="news-cat">Innovation</div>
+          <h3 class="news-title">Panasonic & GOBEL Unveil Next-Gen Home Appliance Line for Indonesia</h3>
+          <div class="news-meta">January 2025 · 4 min read</div>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CSR / SUSTAINABILITY ═══════════════════════════ -->
+<section class="csr" id="csr">
+  <canvas id="csr-beams"></canvas>
+  <div class="csr-inner">
+
+    <div class="csr-header reveal">
+      <div class="section-tag" style="color:#56a443">Our Commitment</div>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="csr-bento">
+
+      <!-- ── Headline cell (left, spans 3 rows) ── -->
+      <div class="csr-cell csr-cell--headline reveal">
+        <div>
+          <h2 class="csr-headline">
+            Building a<br /><span class="gold">Sustainable</span><br />Indonesia
+          </h2>
+          <p class="csr-body">
+            GOBEL Group's commitment to Indonesia extends beyond commerce. Through the
+            GOBEL Foundation and group-wide initiatives, we invest in education,
+            environment, and community empowerment across the archipelago.
+          </p>
+        </div>
+        <div class="csr-pledge">
+          <p class="csr-pledge-text">"GOBEL Mengabdi untuk Negeri" — Seven decades of building industries, empowering communities, and shaping the future of Indonesia.</p>
+        </div>
+      </div>
+
+      <!-- ── Stat: Students ── -->
+      <div class="csr-cell csr-cell--stat reveal">
+        <div class="csr-stat-num">50K+</div>
+        <div class="csr-stat-label">Students supported through GOBEL Foundation scholarships</div>
+      </div>
+
+      <!-- ── Stat: Communities ── -->
+      <div class="csr-cell csr-cell--stat reveal">
+        <div class="csr-stat-num">200+</div>
+        <div class="csr-stat-label">Communities reached through CSR programs nationwide</div>
+      </div>
+
+      <!-- ── Pillar: Education ── -->
+      <div class="csr-cell csr-cell--pillar reveal">
+        <div class="csr-pillar-icon-wrap">📚</div>
+        <h4 class="csr-pillar-title">Education</h4>
+        <p class="csr-pillar-body">Scholarship programs and vocational training for the next generation of Indonesian leaders.</p>
+      </div>
+
+      <!-- ── Pillar: Environment ── -->
+      <div class="csr-cell csr-cell--pillar reveal">
+        <div class="csr-pillar-icon-wrap">🌱</div>
+        <h4 class="csr-pillar-title">Environment</h4>
+        <p class="csr-pillar-body">Green manufacturing initiatives and waste-reduction programs across all business units.</p>
+      </div>
+
+      <!-- ── Pillar: Community ── -->
+      <div class="csr-cell csr-cell--pillar reveal">
+        <div class="csr-pillar-icon-wrap">🤝</div>
+        <h4 class="csr-pillar-title">Community</h4>
+        <p class="csr-pillar-body">Empowering local communities through UMKM development and economic inclusion programs.</p>
+      </div>
+
+      <!-- ── Pillar: Innovation ── -->
+      <div class="csr-cell csr-cell--pillar reveal">
+        <div class="csr-pillar-icon-wrap">⚡</div>
+        <h4 class="csr-pillar-title">Innovation</h4>
+        <p class="csr-pillar-body">Investing in R&amp;D and digital transformation to keep Indonesia competitive on the global stage.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CAREERS ═══════════════════════════ -->
+<section class="careers" id="careers">
+  <div class="careers-bg"></div>
+  <div class="careers-overlay"></div>
+  <div class="careers-inner reveal">
+    <p class="careers-tagline">
+      <a href="#" class="careers-link">Join our team</a> and take the next step toward excellence and growth.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" alt="GOBEL Group" class="footer-logo" />
+        <p class="footer-tagline">
+          <strong>GOBEL Group</strong><br />
+          Seven decades of building Indonesia's industries, empowering communities, and shaping the nation's future.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" title="LinkedIn"><img src="./brand_assets/social_networks/Platform=LinkedIn, Color=Negative.png" alt="LinkedIn" /></a>
+          <a href="#" class="social-btn" title="Instagram"><img src="./brand_assets/social_networks/Platform=Instagram, Color=Negative.png" alt="Instagram" /></a>
+          <a href="#" class="social-btn" title="YouTube"><img src="./brand_assets/social_networks/Platform=YouTube, Color=Negative.png" alt="YouTube" /></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="#">About GOBEL Group</a>
+          <a href="#">Our History</a>
+          <a href="#">Leadership Team</a>
+          <a href="#">70th Anniversary</a>
+          <a href="#">Awards &amp; Recognition</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Business</div>
+        <div class="footer-links">
+          <a href="#">Consumer Electronics</a>
+          <a href="#">Food &amp; Beverage</a>
+          <a href="#">Logistics</a>
+          <a href="#">Property</a>
+          <a href="#">Infrastructure</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="#">Media Inquiries</a>
+          <a href="#">Investor Relations</a>
+          <a href="#">Careers</a>
+          <a href="#">GOBEL Foundation</a>
+          <a href="#">Jakarta HQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 GOBEL Group. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── Cobe Globe — initialised from ESM module below ───
+
+  // ─── Hero Slider ───
+  (function() {
+    const track    = document.getElementById('heroTrack');
+    const dots     = document.querySelectorAll('.hero-dot');
+    const prevBtn  = document.getElementById('heroPrev');
+    const nextBtn  = document.getElementById('heroNext');
+    const counter  = document.getElementById('heroCurrentNum');
+    const total    = 2;
+    let current    = 0;
+    let autoTimer  = null;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      if (counter) counter.textContent = String(current + 1).padStart(2, '0');
+    }
+
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current + 1), 6000);
+    }
+
+    prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); startAuto(); }));
+
+    // Pause on hover
+    const slider = document.getElementById('heroSlider');
+    slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    slider.addEventListener('mouseleave', startAuto);
+
+    startAuto();
+  })();
+
+  // ─── Scroll nav ───
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ─── Reveal on scroll (progressive enhancement) ───
+  document.documentElement.classList.add('js-loaded');
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // ─── 70th Anniversary: scroll reveals ───
+  (function() {
+    const annivSection = document.querySelector('.anniversary');
+    const els = {
+      photo:    document.getElementById('annivPhotoPanel'),
+      crest:    document.getElementById('annivCrest'),
+      cols:     document.getElementById('annivBodyCols'),
+      rule:     null,
+      line1:    document.getElementById('annivLine1'),
+      line2:    document.getElementById('annivLine2'),
+    };
+
+    let triggered = false;
+    function triggerAnniv() {
+      if (triggered) return;
+      triggered = true;
+      if (els.photo)  setTimeout(() => els.photo.classList.add('in-view'),   0);
+      if (els.crest)  setTimeout(() => els.crest.classList.add('in-view'),   80);
+      if (els.cols)   setTimeout(() => els.cols.classList.add('in-view'),   200);
+      if (els.rule)   setTimeout(() => els.rule.classList.add('in-view'),   320);
+      if (els.line1)  setTimeout(() => els.line1.classList.add('in-view'),  300);
+      if (els.line2)  setTimeout(() => els.line2.classList.add('in-view'),  460);
+    }
+
+    if ('IntersectionObserver' in window && annivSection) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { triggerAnniv(); io.disconnect(); } });
+      }, { threshold: 0.08 });
+      io.observe(annivSection);
+    }
+    function checkScroll() {
+      if (triggered || !annivSection) return;
+      if (annivSection.getBoundingClientRect().top < window.innerHeight * 0.9) {
+        triggerAnniv();
+        window.removeEventListener('scroll', checkScroll);
+      }
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    setTimeout(checkScroll, 200);
+  })();
+
+  // ─── Animated bars on CSR view ───
+  const bars = document.querySelectorAll('.csr-bar-fill');
+  const widths = [];
+  bars.forEach(b => { widths.push(b.style.width); });
+  // Reset to 0 only if IntersectionObserver supported
+  if ('IntersectionObserver' in window) {
+    bars.forEach(b => { b.style.width = '0%'; b.style.transition = 'none'; });
+    const barIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          bars.forEach((b, i) => {
+            setTimeout(() => {
+              b.style.transition = 'width 1.2s cubic-bezier(0.4,0,0.2,1)';
+              b.style.width = widths[i];
+            }, 200 + i * 150);
+          });
+          barIO.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    if (bars.length) barIO.observe(bars[0].closest('.csr-visual'));
+  }
+
+  // ─── Hero Particles ───
+  (function () {
+    const canvas = document.getElementById('hero-particles');
+    const ctx = canvas.getContext('2d');
+    const COLOR = [253, 213, 128]; // gold #fdd580
+    const QUANTITY = 120;
+    const BASE_SIZE = 0.5;
+    const STATICITY = 60;
+    const EASE = 40;
+
+    let dpr = window.devicePixelRatio || 1;
+    let mouse = { x: -9999, y: -9999 };
+    let circles = [];
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width  = rect.width  * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width  = rect.width  + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function makeCircle() {
+      const w = canvas.width  / dpr;
+      const h = canvas.height / dpr;
+      return {
+        x: rand(0, w), y: rand(0, h),
+        tx: 0, ty: 0,
+        size: rand(BASE_SIZE, BASE_SIZE + 1.6),
+        alpha: 0, targetAlpha: rand(0.1, 0.55),
+        dx: rand(-0.04, 0.04), dy: rand(-0.04, 0.04),
+        mag: rand(0.1, 4),
+      };
+    }
+
+    function initCircles() {
+      circles = [];
+      for (let i = 0; i < QUANTITY; i++) circles.push(makeCircle());
+    }
+
+    function drawCircle(c) {
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${COLOR[0]},${COLOR[1]},${COLOR[2]},${c.alpha})`;
+      ctx.fill();
+    }
+
+    function animate() {
+      const w = canvas.width  / dpr;
+      const h = canvas.height / dpr;
+      const edge = 20;
+      ctx.clearRect(0, 0, w, h);
+
+      circles.forEach((c, i) => {
+        // edge fade
+        const ex = Math.min(c.x / edge, (w - c.x) / edge, 1);
+        const ey = Math.min(c.y / edge, (h - c.y) / edge, 1);
+        const edgeFade = Math.min(ex, ey);
+        c.targetAlpha = rand(0.08, 0.5) * edgeFade;
+        c.alpha += (c.targetAlpha - c.alpha) * 0.06;
+
+        // mouse magnetism
+        c.tx = (mouse.x - c.x) / (STATICITY / c.mag);
+        c.ty = (mouse.y - c.y) / (STATICITY / c.mag);
+        c.x += c.dx + c.tx / EASE;
+        c.y += c.dy + c.ty / EASE;
+
+        // respawn if out of bounds
+        if (c.x < -20 || c.x > w + 20 || c.y < -20 || c.y > h + 20) {
+          circles[i] = makeCircle();
+        } else {
+          drawCircle(c);
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => { resize(); initCircles(); });
+    canvas.parentElement.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.parentElement.addEventListener('mouseleave', () => {
+      mouse.x = -9999; mouse.y = -9999;
+    });
+
+    resize();
+    initCircles();
+    animate();
+  })();
+
+  // ─── GoTrans Particles ───
+  (function () {
+    const canvas = document.getElementById('gotrans-particles');
+    const ctx = canvas.getContext('2d');
+    const COLOR = [255, 255, 255]; // white particles on purple bg
+    const QUANTITY = 130;
+    const BASE_SIZE = 0.5;
+    const STATICITY = 55;
+    const EASE = 38;
+
+    let dpr = window.devicePixelRatio || 1;
+    let mouse = { x: -9999, y: -9999 };
+    let circles = [];
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width  = rect.width  * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width  = rect.width  + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function makeCircle() {
+      const w = canvas.width  / dpr;
+      const h = canvas.height / dpr;
+      return {
+        x: rand(0, w), y: rand(0, h),
+        tx: 0, ty: 0,
+        size: rand(BASE_SIZE, BASE_SIZE + 1.8),
+        alpha: 0, targetAlpha: rand(0.08, 0.5),
+        dx: rand(-0.04, 0.04), dy: rand(-0.04, 0.04),
+        mag: rand(0.1, 4),
+      };
+    }
+
+    function initCircles() {
+      circles = [];
+      for (let i = 0; i < QUANTITY; i++) circles.push(makeCircle());
+    }
+
+    function drawCircle(c) {
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${COLOR[0]},${COLOR[1]},${COLOR[2]},${c.alpha})`;
+      ctx.fill();
+    }
+
+    function animate() {
+      const w = canvas.width  / dpr;
+      const h = canvas.height / dpr;
+      const edge = 20;
+      ctx.clearRect(0, 0, w, h);
+
+      circles.forEach((c, i) => {
+        const ex = Math.min(c.x / edge, (w - c.x) / edge, 1);
+        const ey = Math.min(c.y / edge, (h - c.y) / edge, 1);
+        c.targetAlpha = rand(0.06, 0.45) * Math.min(ex, ey);
+        c.alpha += (c.targetAlpha - c.alpha) * 0.06;
+
+        c.tx = (mouse.x - c.x) / (STATICITY / c.mag);
+        c.ty = (mouse.y - c.y) / (STATICITY / c.mag);
+        c.x += c.dx + c.tx / EASE;
+        c.y += c.dy + c.ty / EASE;
+
+        if (c.x < -20 || c.x > w + 20 || c.y < -20 || c.y > h + 20) {
+          circles[i] = makeCircle();
+        } else {
+          drawCircle(c);
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => { resize(); initCircles(); });
+    canvas.parentElement.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.parentElement.addEventListener('mouseleave', () => {
+      mouse.x = -9999; mouse.y = -9999;
+    });
+
+    resize();
+    initCircles();
+    animate();
+  })();
+</script>
+
+<!-- ─── Cobe Interactive 3D Globe ─── -->
+<script type="module">
+  import createGlobe from 'https://esm.sh/cobe@0.6.3';
+
+  const canvas = document.getElementById('gobel-globe');
+  if (!canvas) throw new Error('Globe canvas not found');
+
+  const SIZE = 860;
+  const DPR  = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.style.width  = SIZE + 'px';
+  canvas.style.height = SIZE + 'px';
+
+  // Indonesia-centred start: lon 118°E
+  // cobe phi=0 → faces ~0°lon; to get 118°E front-and-centre:
+  // phi = -(118 / 180) * Math.PI ≈ -2.06  (rotate westward so 118E faces you)
+  let phi   = -2.06;
+  let theta = 0.18;   // slight northern tilt
+  let spinning = true;
+
+  // Markers: Indonesia cities + neighbours
+  const markers = [
+    { location: [-6.21, 106.85], size: 0.10 },  // Jakarta
+    { location: [ 3.59,  98.67], size: 0.07 },  // Medan
+    { location: [-5.14, 119.41], size: 0.07 },  // Makassar
+    { location: [-8.67, 115.21], size: 0.06 },  // Bali
+    { location: [ 1.47, 124.84], size: 0.06 },  // Manado
+    { location: [-2.53, 140.72], size: 0.05 },  // Jayapura
+    { location: [ 1.29, 103.85], size: 0.05 },  // Singapore
+    { location: [13.75, 100.52], size: 0.04 },  // Bangkok
+    { location: [35.69, 139.69], size: 0.04 },  // Tokyo
+  ];
+
+  const globe = createGlobe(canvas, {
+    devicePixelRatio: DPR,
+    width:  SIZE * DPR,
+    height: SIZE * DPR,
+    phi,
+    theta,
+    dark: 1,
+    diffuse: 1.6,
+    mapSamples: 22000,
+    mapBrightness: 9,
+    baseColor:   [0.12, 0.09, 0.05],   // warm dark brown — matches #1e170d
+    markerColor: [0.85, 0.60, 0.20],   // gold #d99933
+    glowColor:   [0.65, 0.46, 0.16],   // gold glow
+    markers,
+    onRender(state) {
+      if (spinning) phi += 0.003;
+      state.phi   = phi;
+      state.theta = theta;
+    },
+  });
+
+  // ── Drag interaction ──
+  let dragging = false, lastX = 0, lastY = 0;
+
+  canvas.addEventListener('mousedown', e => {
+    dragging = true; spinning = false;
+    lastX = e.clientX; lastY = e.clientY;
+  });
+  window.addEventListener('mouseup', () => { dragging = false; });
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    phi   -= (e.clientX - lastX) * 0.006;
+    theta  = Math.max(-1.4, Math.min(1.4, theta + (e.clientY - lastY) * 0.006));
+    lastX = e.clientX; lastY = e.clientY;
+  });
+
+  // Resume auto-spin 3 s after releasing the mouse
+  window.addEventListener('mouseup', () => {
+    setTimeout(() => { spinning = true; }, 3000);
+  });
+
+  // Touch support
+  canvas.addEventListener('touchstart', e => {
+    dragging = true; spinning = false;
+    lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchend', () => {
+    dragging = false;
+    setTimeout(() => { spinning = true; }, 3000);
+  });
+  window.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    phi   -= (e.touches[0].clientX - lastX) * 0.006;
+    theta  = Math.max(-1.4, Math.min(1.4, theta + (e.touches[0].clientY - lastY) * 0.006));
+    lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+  }, { passive: true });
+
+  // Clean up on page unload
+  window.addEventListener('beforeunload', () => globe.destroy());
+</script>
+
+<!-- CSR section: animated green beams -->
+<script>
+  (function () {
+    const canvas = document.getElementById('csr-beams');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const ANGLE = -38 * Math.PI / 180;   // diagonal tilt
+    const NUM   = 12;
+    let beams = [];
+    let w, h, dpr;
+
+    function resize() {
+      const section = canvas.parentElement;
+      dpr = window.devicePixelRatio || 1;
+      w   = section.offsetWidth;
+      h   = section.offsetHeight;
+      canvas.width  = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width  = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function makeBeam() {
+      return {
+        x:       Math.random() * (w + 600) - 200,
+        y:       h + Math.random() * 300,
+        width:   50 + Math.random() * 120,
+        length:  250 + Math.random() * 450,
+        speed:   0.25 + Math.random() * 0.45,
+        opacity: 0.03 + Math.random() * 0.07,
+        hue:     118 + Math.random() * 28,   // green HSL range
+        pulse:   Math.random() * Math.PI * 2,
+        pulseSpd: 0.004 + Math.random() * 0.006,
+      };
+    }
+
+    function drawBeam(b) {
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(ANGLE);
+      const pulsed = b.opacity * (0.7 + 0.3 * Math.sin(b.pulse));
+      const grad = ctx.createLinearGradient(0, 0, 0, -b.length);
+      grad.addColorStop(0,    `hsla(${b.hue},68%,50%, 0)`);
+      grad.addColorStop(0.25, `hsla(${b.hue},68%,52%, ${pulsed * 0.5})`);
+      grad.addColorStop(0.5,  `hsla(${b.hue},68%,54%, ${pulsed})`);
+      grad.addColorStop(0.75, `hsla(${b.hue},68%,52%, ${pulsed * 0.5})`);
+      grad.addColorStop(1,    `hsla(${b.hue},68%,50%, 0)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(-b.width / 2, -b.length, b.width, b.length);
+      ctx.restore();
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      beams.forEach(b => {
+        b.y      -= b.speed;
+        b.pulse  += b.pulseSpd;
+        // respawn below when fully off top
+        if (b.y + b.length < -100) {
+          Object.assign(b, makeBeam());
+          b.y = h + b.length + Math.random() * 200;
+        }
+        drawBeam(b);
+      });
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    for (let i = 0; i < NUM; i++) {
+      const b = makeBeam();
+      // stagger initial positions along the section height
+      b.y = Math.random() * (h + b.length * 2) - b.length;
+      beams.push(b);
+    }
+    new ResizeObserver(resize).observe(canvas.parentElement);
+    tick();
+  })();
+</script>
+
+<!-- Mouse tracking spotlight -->
+<div id="spotlight-overlay"></div>
+<script>
+  (function () {
+    const el = document.getElementById('spotlight-overlay');
+    // Target mouse position
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    // Smoothed (lerped) position
+    let cx = mx;
+    let cy = my;
+    let active = false;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      active = true;
+    });
+    document.addEventListener('mouseleave', () => { active = false; });
+    document.addEventListener('mouseenter', () => { active = true; });
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function tick() {
+      if (active) {
+        cx = lerp(cx, mx, 0.06);
+        cy = lerp(cy, my, 0.06);
+        el.style.background =
+          `radial-gradient(circle 700px at ${cx}px ${cy}px, rgba(255,213,128,0.07) 0%, rgba(255,213,128,0.025) 40%, transparent 70%)`;
+      } else {
+        // Fade out gradually when cursor leaves
+        cx = lerp(cx, mx, 0.04);
+        cy = lerp(cy, my, 0.04);
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+</script>
+
+</body>
+</html>
