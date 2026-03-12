@@ -7,49 +7,57 @@
   <link rel="icon" type="image/png" href="./brand_assets/gobel_group/Gobel_All Logo_Primary.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* ─── Neue Haas Grotesk (local trial fonts) ─── */
-    @font-face {
-      font-family: 'NHG';
-      src: url('./brand_assets/typography/neuehaasgrotdisp-55roman-trial.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'NHG';
-      src: url('./brand_assets/typography/neuehaasgrotdisp-65medium-trial.otf') format('opentype');
-      font-weight: 500;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'NHG';
-      src: url('./brand_assets/typography/neuehaasgrotdisp-75bold-trial.otf') format('opentype');
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'NHG';
-      src: url('./brand_assets/typography/neuehaasgrotdisp-95black-trial.otf') format('opentype');
-      font-weight: 900;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'NHGText';
-      src: url('./brand_assets/typography/neuehaasgrottext-55roman-trial.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'NHGText';
-      src: url('./brand_assets/typography/neuehaasgrottext-65medium-trial.otf') format('opentype');
-      font-weight: 500;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'NHGText';
-      src: url('./brand_assets/typography/neuehaasgrottext-75bold-trial.otf') format('opentype');
-      font-weight: 700;
-      font-style: normal;
-    }
+    /* ─── Neue Haas Grotesk Display — full weight stack ─── */
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-15xxthin-trial.otf') format('opentype'); font-weight:100; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-16xxthinitalic-trial.otf') format('opentype'); font-weight:100; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-25xthin-trial.otf') format('opentype'); font-weight:200; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-26xthinitalic-trial.otf') format('opentype'); font-weight:200; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-35thin-trial.otf') format('opentype'); font-weight:300; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-36thinitalic-trial.otf') format('opentype'); font-weight:300; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-45light-trial.otf') format('opentype'); font-weight:350; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-46lightitalic-trial.otf') format('opentype'); font-weight:350; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-95black-trial.otf') format('opentype'); font-weight:900; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-96blackitalic-trial.otf') format('opentype'); font-weight:900; font-style:italic; font-display:swap; }
+
+    /* ─── Neue Haas Grotesk Text — full weight stack ─── */
+    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+
+    /* ─── Neue Haas Grotesk Display Round — full weight stack ─── */
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-15xxthin-trial.otf') format('opentype'); font-weight:100; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-16xxthinitalic-trial.otf') format('opentype'); font-weight:100; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-25xthin-trial.otf') format('opentype'); font-weight:200; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-26xthinitalic-trial.otf') format('opentype'); font-weight:200; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-35thin-trial.otf') format('opentype'); font-weight:300; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-36thinitalic-trial.otf') format('opentype'); font-weight:300; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-45light-trial.otf') format('opentype'); font-weight:350; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-46lightitalic-trial.otf') format('opentype'); font-weight:350; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-95black-trial.otf') format('opentype'); font-weight:900; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-96blackitalic-trial.otf') format('opentype'); font-weight:900; font-style:italic; font-display:swap; }
+
+    /* ─── Neue Haas Grotesk Text Round — full weight stack ─── */
+    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
 
     /* ─── Brand CSS Variables ─── */
     :root {
@@ -73,10 +81,12 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'NHGText', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'NHGText', 'Neue Haas Grotesk Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: var(--near-black);
       color: var(--near-black);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
 
@@ -202,7 +212,7 @@
       margin-bottom: 20px;
     }
     .gotrans-headline {
-      font-family: 'NHG', 'Helvetica Neue', sans-serif;
+      font-family: 'NHG', 'Neue Haas Grotesk Display', 'Helvetica Neue', Helvetica, sans-serif;
       font-weight: 900;
       font-size: clamp(48px, 5.8vw, 92px);
       line-height: 1.0;
@@ -323,7 +333,7 @@
       background: var(--gold-medal);
     }
     .hero-headline {
-      font-family: 'NHG', 'Helvetica Neue', sans-serif;
+      font-family: 'NHG', 'Neue Haas Grotesk Display', 'Helvetica Neue', Helvetica, sans-serif;
       font-weight: 900;
       font-size: clamp(52px, 5.5vw, 88px);
       line-height: 1.0;
