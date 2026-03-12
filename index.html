@@ -135,7 +135,8 @@
     .hero-track {
       display: flex;
       width: 100%;
-      transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .hero-slide {
       flex: 0 0 100%;
@@ -174,24 +175,31 @@
       flex-direction: column;
       justify-content: center;
       flex: 1;
-      padding: 0 72px;
+      padding: 0 48px;
+      padding-top: 72px;
       max-width: 1440px;
       margin: 0 auto;
       width: 100%;
     }
-    .gotrans-label {
-      font-family: 'NHGText', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 0.01em;
-      margin-bottom: 32px;
-    }
     .gotrans-content-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 64px;
       align-items: center;
+    }
+    .gotrans-col-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .gotrans-label {
+      font-family: 'NHGText', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
     .gotrans-headline {
       font-family: 'NHG', 'Helvetica Neue', sans-serif;
@@ -200,14 +208,14 @@
       line-height: 1.0;
       letter-spacing: -0.03em;
       color: #ffffff;
-      margin: 0;
+      margin: 0 0 28px 0;
     }
     .gotrans-body {
       font-family: 'NHGText', sans-serif;
       font-size: 15px;
       line-height: 1.8;
-      color: rgba(255,255,255,0.82);
-      margin: 0 0 28px 0;
+      color: rgba(255,255,255,0.72);
+      margin: 0 0 36px 0;
     }
     .gotrans-cta {
       display: inline-flex; align-items: center; gap: 10px;
@@ -221,6 +229,18 @@
       transition: background 0.2s, transform 0.15s;
     }
     .gotrans-cta:hover { background: #d43605; transform: translateY(-2px); }
+    .gotrans-col-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gotrans-logo-img {
+      max-width: 100%;
+      width: 420px;
+      opacity: 0.92;
+      filter: brightness(1.1);
+      drop-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
     /* Slider navigation */
     .hero-slider-nav {
       position: absolute;
@@ -409,33 +429,10 @@
     }
 
     /* ─── Stats Bar ─── */
-    .stats-bar {
-      background: var(--gold-deep);
-      padding: 0;
-    }
-    .stats-inner {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 48px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .stat-item {
-      padding: 36px 0;
-      border-right: 1px solid rgba(255,255,255,0.2);
-      padding-left: 40px;
-      position: relative;
-    }
-    .stat-item:first-child { padding-left: 0; border-left: none; }
-    .stat-item:last-child { border-right: none; }
-    .stat-number {
-      font-family: 'NHG', sans-serif;
-      font-weight: 900;
-      font-size: 44px;
-      line-height: 1;
-      color: var(--near-black);
-      letter-spacing: -0.03em;
-      margin-bottom: 6px;
+    .hero-divider {
+      width: 100%;
+      height: 3px;
+      background: var(--gold-ore);
     }
     .stat-label {
       font-family: 'NHGText', sans-serif;
@@ -1353,7 +1350,6 @@
       .csr-inner, .footer-top { grid-template-columns: 1fr; }
       .hero-visual { align-items: center; }
       .sectors-grid { grid-template-columns: 1fr 1fr; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .news-grid { grid-template-columns: 1fr 1fr; }
       .about-offset-card { position: static; margin-top: 16px; max-width: 100%; }
       .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -1362,7 +1358,7 @@
       .nav-inner { padding: 0 24px; }
       .nav-links { display: none; }
       .hero-inner { padding: 0 24px; }
-      .sectors-grid, .stats-inner, .news-grid,
+      .sectors-grid, .news-grid,
       .csr-pillars, .footer-top { grid-template-columns: 1fr; }
       .about, .sectors, .anniversary, .csr, .news, .footer { padding: 80px 24px; }
       .anniversary-left, .anniversary-right { padding: 64px 24px; }
@@ -1437,16 +1433,13 @@
     <!-- ── Slide 2: GoTrans Logistics ── -->
     <div class="hero-slide hero-slide--gotrans">
       <div class="gotrans-photo-bg"></div>
-      <canvas id="gotrans-particles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
       <div class="gotrans-layout">
-        <div class="gotrans-label">GoTrans Logistics International</div>
         <div class="gotrans-content-cols">
           <div class="gotrans-col-left">
+            <div class="gotrans-label">GoTrans Logistics International</div>
             <h1 class="gotrans-headline">
               Your Trusted<br />Logistic<br />Partner
             </h1>
-          </div>
-          <div class="gotrans-col-right">
             <p class="gotrans-body">
               Founded in 2009, PT Gotrans Logistics International is part of Gobel Group, a business group that has pioneered industries in Indonesia for nearly seven decades. Leveraging this legacy and network, Gotrans provides comprehensive and reliable logistics services with a focus on efficiency, accuracy, and added value — serving customers across Indonesia and beyond.
             </p>
@@ -1491,27 +1484,8 @@
 
 </section>
 
-<!-- ═══════════════════════════ STATS BAR ═══════════════════════════ -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item reveal">
-      <div class="stat-number">70+</div>
-      <div class="stat-label">Years of Excellence</div>
-    </div>
-    <div class="stat-item reveal" style="transition-delay:0.1s">
-      <div class="stat-number">20+</div>
-      <div class="stat-label">Business Subsidiaries</div>
-    </div>
-    <div class="stat-item reveal" style="transition-delay:0.2s">
-      <div class="stat-number">10K+</div>
-      <div class="stat-label">Dedicated Employees</div>
-    </div>
-    <div class="stat-item reveal" style="transition-delay:0.3s">
-      <div class="stat-number">34</div>
-      <div class="stat-label">Provinces Reached</div>
-    </div>
-  </div>
-</div>
+<!-- ═══════════════════════════ HERO DIVIDER ═══════════════════════════ -->
+<div class="hero-divider"></div>
 
 <!-- ═══════════════════════════ 70TH ANNIVERSARY ═══════════════════════════ -->
 <section class="anniversary" id="anniversary">
@@ -1574,22 +1548,22 @@
       </p>
       <div class="about-stats">
         <div class="stat-block reveal">
-          <div class="stat-value">70<span class="stat-suffix">+</span></div>
+          <div class="stat-value" data-count="70" data-suffix="+"><span class="stat-num">0</span><span class="stat-suffix">+</span></div>
           <div class="stat-label">Years</div>
           <div class="stat-desc">Heritage &amp; National Leadership</div>
         </div>
         <div class="stat-block reveal" style="transition-delay:0.05s">
-          <div class="stat-value">50<span class="stat-suffix">K+</span></div>
+          <div class="stat-value" data-count="50" data-suffix="K+"><span class="stat-num">0</span><span class="stat-suffix">K+</span></div>
           <div class="stat-label">Employees</div>
           <div class="stat-desc">Workforce Across Indonesia</div>
         </div>
         <div class="stat-block reveal" style="transition-delay:0.1s">
-          <div class="stat-value">40<span class="stat-suffix">+</span></div>
+          <div class="stat-value" data-count="40" data-suffix="+"><span class="stat-num">0</span><span class="stat-suffix">+</span></div>
           <div class="stat-label">Business Lines</div>
           <div class="stat-desc">Diversified Business Portfolio</div>
         </div>
         <div class="stat-block reveal" style="transition-delay:0.15s">
-          <div class="stat-value">27</div>
+          <div class="stat-value" data-count="27" data-suffix=""><span class="stat-num">0</span></div>
           <div class="stat-label">Provinces</div>
           <div class="stat-desc">Operational Reach Nusantara</div>
         </div>
@@ -1993,21 +1967,49 @@
 
   // ─── Hero Slider ───
   (function() {
-    const track    = document.getElementById('heroTrack');
-    const dots     = document.querySelectorAll('.hero-dot');
-    const prevBtn  = document.getElementById('heroPrev');
-    const nextBtn  = document.getElementById('heroNext');
-    const counter  = document.getElementById('heroCurrentNum');
-    const total    = 2;
-    let current    = 0;
-    let autoTimer  = null;
+    const track   = document.getElementById('heroTrack');
+    const dots    = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('heroPrev');
+    const nextBtn = document.getElementById('heroNext');
+    const counter = document.getElementById('heroCurrentNum');
+    const slider  = document.getElementById('heroSlider');
+    const TOTAL       = 2;
+    const DURATION_MS = 550; // must match CSS transition duration
+    let current   = 0;
+    let busy      = false;
+    let busyTimer = null;
+    let autoTimer = null;
+
+    function unlock() {
+      busy = false;
+      window._heroSliding = false;
+    }
 
     function goTo(idx) {
-      current = (idx + total) % total;
-      track.style.transform = `translateX(-${current * 100}%)`;
+      if (busy) return;
+      const next = (idx + TOTAL) % TOTAL;
+      if (next === current) return;
+
+      busy = true;
+      window._heroSliding = true;           // signal parallax to skip layout reads
+      clearTimeout(busyTimer);
+
+      current = next;
+      track.style.transform = `translate3d(-${current * 100}%, 0, 0)`;
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
       if (counter) counter.textContent = String(current + 1).padStart(2, '0');
+
+      // Primary: release on transitionend
+      // Fallback: release after duration + 80ms buffer if event never fires
+      busyTimer = setTimeout(unlock, DURATION_MS + 80);
     }
+
+    track.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'transform') {
+        clearTimeout(busyTimer);
+        unlock();
+      }
+    });
 
     function startAuto() {
       clearInterval(autoTimer);
@@ -2018,11 +2020,10 @@
     nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
     dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); startAuto(); }));
 
-    // Pause on hover
-    const slider = document.getElementById('heroSlider');
     slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
     slider.addEventListener('mouseleave', startAuto);
 
+    window._heroSliding = false;
     startAuto();
   })();
 
@@ -2044,6 +2045,76 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => io.observe(el));
+
+  // ─── Countup animation for Gobel in Numbers (loops while section is visible) ───
+  (function() {
+    const CYCLE_DURATION = 1800;  // count-up duration ms
+    const HOLD_DURATION  = 1200;  // pause at target before restarting ms
+
+    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+    // Per-element animation state
+    const states = new Map(); // el → { raf, timeout, active }
+
+    function startCycle(el) {
+      const state = states.get(el);
+      if (!state || !state.active) return;
+
+      const target = parseInt(el.dataset.count, 10);
+      const numEl  = el.querySelector('.stat-num');
+      if (!numEl) return;
+
+      const begin = performance.now();
+      function tick(now) {
+        if (!states.get(el)?.active) return;
+        const progress = Math.min((now - begin) / CYCLE_DURATION, 1);
+        numEl.textContent = Math.round(easeOutQuart(progress) * target);
+        if (progress < 1) {
+          state.raf = requestAnimationFrame(tick);
+        } else {
+          numEl.textContent = target;
+          // Hold at target, then restart
+          state.timeout = setTimeout(() => startCycle(el), HOLD_DURATION);
+        }
+      }
+      state.raf = requestAnimationFrame(tick);
+    }
+
+    function stopCycle(el) {
+      const state = states.get(el);
+      if (!state) return;
+      state.active = false;
+      cancelAnimationFrame(state.raf);
+      clearTimeout(state.timeout);
+      // Reset display to 0 so next entry starts fresh
+      const numEl = el.querySelector('.stat-num');
+      if (numEl) numEl.textContent = '0';
+    }
+
+    const countEls = document.querySelectorAll('[data-count]');
+    countEls.forEach(el => states.set(el, { raf: null, timeout: null, active: false }));
+
+    const sectionIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // Section entered — start all counters
+          countEls.forEach(el => {
+            const state = states.get(el);
+            if (!state.active) {
+              state.active = true;
+              startCycle(el);
+            }
+          });
+        } else {
+          // Section left — stop all counters
+          countEls.forEach(el => stopCycle(el));
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) sectionIO.observe(aboutSection);
+  })();
 
   // ─── 70th Anniversary: scroll reveals ───
   (function() {
@@ -2205,97 +2276,6 @@
     animate();
   })();
 
-  // ─── GoTrans Particles ───
-  (function () {
-    const canvas = document.getElementById('gotrans-particles');
-    const ctx = canvas.getContext('2d');
-    const COLOR = [255, 255, 255]; // white particles on purple bg
-    const QUANTITY = 130;
-    const BASE_SIZE = 0.5;
-    const STATICITY = 55;
-    const EASE = 38;
-
-    let dpr = window.devicePixelRatio || 1;
-    let mouse = { x: -9999, y: -9999 };
-    let circles = [];
-
-    function resize() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      canvas.width  = rect.width  * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width  = rect.width  + 'px';
-      canvas.style.height = rect.height + 'px';
-      ctx.scale(dpr, dpr);
-    }
-
-    function rand(min, max) { return Math.random() * (max - min) + min; }
-
-    function makeCircle() {
-      const w = canvas.width  / dpr;
-      const h = canvas.height / dpr;
-      return {
-        x: rand(0, w), y: rand(0, h),
-        tx: 0, ty: 0,
-        size: rand(BASE_SIZE, BASE_SIZE + 1.8),
-        alpha: 0, targetAlpha: rand(0.08, 0.5),
-        dx: rand(-0.04, 0.04), dy: rand(-0.04, 0.04),
-        mag: rand(0.1, 4),
-      };
-    }
-
-    function initCircles() {
-      circles = [];
-      for (let i = 0; i < QUANTITY; i++) circles.push(makeCircle());
-    }
-
-    function drawCircle(c) {
-      ctx.beginPath();
-      ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${COLOR[0]},${COLOR[1]},${COLOR[2]},${c.alpha})`;
-      ctx.fill();
-    }
-
-    function animate() {
-      const w = canvas.width  / dpr;
-      const h = canvas.height / dpr;
-      const edge = 20;
-      ctx.clearRect(0, 0, w, h);
-
-      circles.forEach((c, i) => {
-        const ex = Math.min(c.x / edge, (w - c.x) / edge, 1);
-        const ey = Math.min(c.y / edge, (h - c.y) / edge, 1);
-        c.targetAlpha = rand(0.06, 0.45) * Math.min(ex, ey);
-        c.alpha += (c.targetAlpha - c.alpha) * 0.06;
-
-        c.tx = (mouse.x - c.x) / (STATICITY / c.mag);
-        c.ty = (mouse.y - c.y) / (STATICITY / c.mag);
-        c.x += c.dx + c.tx / EASE;
-        c.y += c.dy + c.ty / EASE;
-
-        if (c.x < -20 || c.x > w + 20 || c.y < -20 || c.y > h + 20) {
-          circles[i] = makeCircle();
-        } else {
-          drawCircle(c);
-        }
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', () => { resize(); initCircles(); });
-    canvas.parentElement.addEventListener('mousemove', e => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-    canvas.parentElement.addEventListener('mouseleave', () => {
-      mouse.x = -9999; mouse.y = -9999;
-    });
-
-    resize();
-    initCircles();
-    animate();
-  })();
 </script>
 
 <!-- ─── Cobe Interactive 3D Globe ─── -->
@@ -2510,6 +2490,73 @@
     }
     tick();
   })();
+</script>
+
+<!-- ─── Parallax scroll ─── -->
+<script>
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // ── Gather elements ──
+  const hero        = document.querySelector('.hero');
+  const heroGrain   = document.querySelector('.hero-bg-grain');
+  const heroRadial  = document.querySelector('.hero-bg-radial');
+  const heroContent = document.querySelector('.hero-content');
+  const heroVisual  = document.querySelector('.hero-visual');
+  const gotransBg   = document.querySelector('.gotrans-photo-bg');
+  const annivPhoto  = document.getElementById('annivPhotoPanel');
+  const careersBg   = document.querySelector('.careers-bg');
+
+  // GPU hints — exclude gotransBg to avoid compositor conflict with slide track
+  [heroGrain, heroRadial, heroContent, heroVisual]
+    .forEach(el => { if (el) el.style.willChange = 'transform'; });
+  [annivPhoto, careersBg]
+    .forEach(el => { if (el) el.style.willChange = 'background-position'; });
+
+  let raf = null;
+
+  function update() {
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+
+    // ── Hero layers — top-relative, only while hero is on screen ──
+    if (hero && hero.getBoundingClientRect().bottom > 0) {
+      if (heroGrain)   heroGrain.style.transform   = `translateY(${scrollY * 0.18}px)`;
+      if (heroRadial)  heroRadial.style.transform   = `translateY(${scrollY * 0.30}px)`;
+      if (heroContent) heroContent.style.transform  = `translateY(${scrollY * -0.10}px)`;
+      if (heroVisual)  heroVisual.style.transform   = `translateY(${scrollY * -0.16}px)`;
+    }
+
+    // ── GoTrans photo background — skip during slide transition to avoid layout thrash ──
+    if (gotransBg && !window._heroSliding) {
+      const r = gotransBg.getBoundingClientRect();
+      const offset = (r.top + r.height / 2 - vh / 2) * 0.22;
+      gotransBg.style.transform = `translateY(${offset}px)`;
+    }
+
+    // ── Anniversary photo panel — background-position (safe: element has CSS translateX) ──
+    if (annivPhoto) {
+      const r = annivPhoto.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+      annivPhoto.style.backgroundPositionY = `${50 + (p - 0.5) * 28}%`;
+    }
+
+    // ── Careers background — background-position (safe: element has CSS scale) ──
+    if (careersBg) {
+      const r = careersBg.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+      careersBg.style.backgroundPositionY = `${30 + p * 40}%`;
+    }
+
+    raf = null;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+
+  update(); // set initial positions
+})();
 </script>
 
 </body>
