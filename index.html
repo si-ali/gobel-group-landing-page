@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GOBEL Group | Membangun Indonesia Sejak 1954</title>
-  <link rel="icon" type="image/png" href="./brand_assets/gobel_group/Gobel_All Logo_Primary.png" />
+  <title>GOBEL Group</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="./brand_assets/gobel_group/Gobel_Group_HI.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./brand_assets/gobel_group/Gobel_Group_HI.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* ─── Neue Haas Grotesk Display — full weight stack ─── */
@@ -108,7 +109,7 @@
       background: rgba(15,15,15,0.97);
       box-shadow: 0 8px 40px rgba(0,0,0,0.5);
     }
-    .nav-logo img { height: 52px; width: auto; }
+    .nav-logo img { height: 72px; width: auto; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
     .nav-links a {
       font-family: 'NHGText', sans-serif;
@@ -128,7 +129,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #fff;
-      background: linear-gradient(135deg, #56a443 0%, #1a512a 100%);
+      background: linear-gradient(135deg, #3db54a 0%, #1e7a2a 100%);
       padding: 10px 24px;
       text-decoration: none;
       transition: filter 0.2s, transform 0.15s;
@@ -805,20 +806,20 @@
 
     /* ─── CSR / Sustainability ─── */
     .csr {
-      background: #040f07;
+      background: #0d4a18;
       padding: 120px 48px;
       position: relative;
       overflow: hidden;
     }
-    /* Deep atmospheric green gradient layers */
+    /* Bright leaf layered atmosphere */
     .csr::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse 55% 70% at 80% 20%, rgba(86,164,67,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 15% 80%, rgba(26,81,42,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 50% at 50% 50%, rgba(4,20,8,0.6) 0%, transparent 100%);
+        radial-gradient(ellipse 60% 70% at 85% 15%, rgba(87,210,100,0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 10% 85%, rgba(61,181,74,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(6,38,12,0.50) 0%, transparent 100%);
       pointer-events: none;
     }
     /* Beams canvas */
@@ -828,7 +829,7 @@
       width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      opacity: 0.45;
       filter: blur(2px);
     }
     .csr-inner {
@@ -840,8 +841,9 @@
     /* Override decorative line color inside CSR */
     .about .gold-line { margin-left: auto; margin-right: auto; }
     .about .section-tag { justify-content: center; }
-    .csr .gold-line { background: #1a512a; }
-    .csr .section-tag::before { background: #1a512a; }
+    .csr .gold-line { background: #57d264; }
+    .csr .section-tag { color: #a8f0ae; }
+    .csr .section-tag::before { background: #57d264; }
     /* ── Bento grid ── */
     .csr-bento {
       display: grid;
@@ -850,16 +852,22 @@
       gap: 16px;
     }
     .csr-cell {
-      border: 1px solid rgba(86,164,67,0.12);
+      border: 1px solid rgba(87,210,100,0.20);
+      background: rgba(255,255,255,0.05);
       padding: 36px;
-      transition: border-color 0.3s ease, background 0.3s ease;
+      transition: border-color 0.3s ease, background 0.3s ease,
+                  box-shadow 0.3s ease;
     }
-    .csr-cell:hover { border-color: rgba(86,164,67,0.32); background: rgba(86,164,67,0.03); }
+    .csr-cell:hover {
+      border-color: rgba(87,210,100,0.40);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 4px 32px rgba(61,181,74,0.15);
+    }
     /* Headline — spans full left column */
     .csr-cell--headline {
       grid-column: 1;
       grid-row: 1 / 4;
-      background: rgba(255,255,255,0.025);
+      background: rgba(255,255,255,0.07);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -872,37 +880,37 @@
       font-size: clamp(34px, 2.8vw, 50px);
       line-height: 1.06;
       letter-spacing: -0.03em;
-      color: #fff;
+      color: #ffffff;
       margin-bottom: 24px;
     }
-    .csr-headline .gold { color: #56a443; }
+    .csr-headline .gold { color: #57d264; }
     .csr-body {
       font-family: 'NHGText', sans-serif;
       font-size: 15px;
       line-height: 1.8;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.70);
     }
     .csr-pledge {
-      border-top: 1px solid rgba(86,164,67,0.15);
+      border-top: 1px solid rgba(87,210,100,0.25);
       padding-top: 24px;
       margin-top: auto;
     }
     .csr-pledge-text {
       font-family: 'NHGText', sans-serif;
       font-size: 12px;
-      color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.50);
       line-height: 1.65;
       font-style: italic;
       letter-spacing: 0.01em;
     }
-    /* Stat cells — shine border */
+    /* Stat cells */
     .csr-cell--stat {
-      background: rgba(86,164,67,0.07);
+      background: rgba(87,210,100,0.12);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       gap: 8px;
-      border: none;
+      border: 1px solid rgba(87,210,100,0.25);
       position: relative;
     }
     /* Rotating shine border — green tones */
@@ -913,7 +921,7 @@
       padding: 1px;
       background: radial-gradient(
         transparent, transparent,
-        #a8e496, #56a443, #1a512a,
+        #8ee882, #3db54a, #1e7a2a,
         transparent, transparent
       );
       background-size: 400% 400%;
@@ -937,14 +945,14 @@
       font-family: 'NHG', sans-serif;
       font-weight: 900;
       font-size: 52px;
-      color: #7ccc68;
+      color: #57d264;
       letter-spacing: -0.04em;
       line-height: 1;
     }
     .csr-stat-label {
       font-family: 'NHGText', sans-serif;
       font-size: 13px;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.65);
       line-height: 1.5;
     }
     /* Pillar cells */
@@ -956,8 +964,8 @@
     .csr-pillar-icon-wrap {
       font-size: 22px;
       width: 42px; height: 42px;
-      background: rgba(86,164,67,0.12);
-      border: 1px solid rgba(86,164,67,0.28);
+      background: rgba(87,210,100,0.15);
+      border: 1px solid rgba(87,210,100,0.35);
       display: flex; align-items: center; justify-content: center;
       border-radius: 10px;
       margin-bottom: 6px;
@@ -967,20 +975,20 @@
       font-family: 'NHG', sans-serif;
       font-weight: 700;
       font-size: 16px;
-      color: #fff;
+      color: #ffffff;
       letter-spacing: -0.01em;
     }
     .csr-pillar-body {
       font-family: 'NHGText', sans-serif;
       font-size: 13px;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.60);
       line-height: 1.65;
       flex: 1;
     }
     /* unused legacy — kept for bar animation JS */
     .csr-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #1a512a, #56a443);
+      background: linear-gradient(90deg, #1e7a2a, #3db54a);
       border-radius: 2px;
       transition: width 1s ease;
     }
@@ -1045,10 +1053,20 @@
     /* ─── Business Fields (Marquee) ─── */
     .partners {
       background: #ffffff;
-      padding: 72px 0;
+      padding: 64px 0;
       border-top: 1px solid #ebebeb;
       overflow: hidden;
     }
+    .partners-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      padding: 0 48px;
+    }
+    .partners-header .section-tag { justify-content: center; }
+    .partners-header .section-tag::before { display: none; }
     .marquee-wrapper {
       position: relative;
       width: 100%;
@@ -1056,7 +1074,7 @@
       background: #fff;
       border-top: 1px solid #f0f0f0;
       border-bottom: 1px solid #f0f0f0;
-      padding: 36px 0;
+      padding: 16px 0;
     }
     /* fade edges */
     .marquee-wrapper::before,
@@ -1091,15 +1109,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 56px;
-      border-right: 1px solid #ebebeb;
+      padding: 0 40px;
       flex-shrink: 0;
+      border-right: 1px solid #ebebeb;
     }
     .marquee-item:last-child { border-right: none; }
     .marquee-logo {
-      height: 44px;
+      /* Height is the unifying dimension — width scales to natural proportions */
+      height: 88px;
       width: auto;
-      max-width: 180px;
+      max-width: 300px; /* prevent ultra-wide logos from dominating */
       object-fit: contain;
       display: block;
       filter: opacity(0.85);
@@ -1107,7 +1126,7 @@
     }
     .marquee-item:hover .marquee-logo {
       filter: opacity(1);
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     /* ─── Footer ─── */
@@ -1126,7 +1145,7 @@
       margin-bottom: 40px;
     }
     .footer-brand {}
-    .footer-logo { height: 56px; margin-bottom: 24px; }
+    .footer-logo { height: 80px; margin-bottom: 24px; }
     .footer-tagline {
       font-family: 'NHGText', sans-serif;
       font-size: 14px;
@@ -1256,9 +1275,9 @@
     <div class="nav-links">
       <a href="#anniversary">About Us</a>
       <a href="#sectors">Our Business</a>
+      <a href="#careers">Career</a>
       <a href="#news">Newsroom</a>
       <a href="#csr">Sustainability</a>
-      <a href="#careers">Career</a>
     </div>
     <a href="#contact" class="nav-cta">Contact Us</a>
   </div>
@@ -1532,41 +1551,57 @@
 
 <!-- ═══════════════════════════ BUSINESS FIELDS ═══════════════════════════ -->
 <section class="partners">
+  <div class="partners-header">
+    <div class="section-tag">Part of Gobel Ecosystem</div>
+  </div>
   <div class="marquee-wrapper">
     <div class="marquee-track">
       <!-- Set A -->
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/panasonic_logo.png" alt="Panasonic" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/chateraise_logo.png" alt="Châteraisé" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/gotrans_logo.png" alt="GoTrans Logistics" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/gobel_foundation_logo.png" alt="Matsushita Gobel Foundation" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/gobel_group/Gobel_All Logo_WordMark-Horizontal-Gold.png" alt="GOBEL Group" class="marquee-logo" />
-      </div>
-      <!-- Set B (duplicate for seamless loop) -->
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/panasonic_logo.png" alt="Panasonic" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/chateraise_logo.png" alt="Châteraisé" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/gotrans_logo.png" alt="GoTrans Logistics" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/business_fields/gobel_foundation_logo.png" alt="Matsushita Gobel Foundation" class="marquee-logo" />
-      </div>
-      <div class="marquee-item">
-        <img src="./brand_assets/gobel_group/Gobel_All Logo_WordMark-Horizontal-Gold.png" alt="GOBEL Group" class="marquee-logo" />
-      </div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/panasonic_logo.svg" alt="Panasonic" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/agit_logo.svg" alt="AGIT" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/dkm_logo.svg" alt="DKM" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/gdsk_logo.svg" alt="GDSK" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/goad_logo.svg" alt="GoAd" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/iiapg_logo.svg" alt="IIAPG" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/panasonic_home_logo.svg" alt="Panasonic Home" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/phc_logo.svg" alt="PHC" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/sgs_logo.svg" alt="SGS" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/chateraise_logo.svg" alt="Châteraisé" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/gotrans_logo.svg" alt="GoTrans" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/nuspar_logo.svg" alt="Nuspar" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/opus_logo.svg" alt="Opus Park" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/panasonic_energy_logo.svg" alt="Panasonic Energy" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/sunstar_logo.svg" alt="Sunstar" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/gobel_foundation_logo.svg" alt="Gobel Foundation" class="marquee-logo" /></div>
+      <!-- Set B — duplicate for seamless loop -->
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/panasonic_logo.svg" alt="Panasonic" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/agit_logo.svg" alt="AGIT" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/dkm_logo.svg" alt="DKM" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/gdsk_logo.svg" alt="GDSK" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/goad_logo.svg" alt="GoAd" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/iiapg_logo.svg" alt="IIAPG" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/panasonic_home_logo.svg" alt="Panasonic Home" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/phc_logo.svg" alt="PHC" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/sgs_logo.svg" alt="SGS" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/chateraise_logo.svg" alt="Châteraisé" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/gotrans_logo.svg" alt="GoTrans" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/nuspar_logo.svg" alt="Nuspar" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/opus_logo.svg" alt="Opus Park" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/panasonic_energy_logo.svg" alt="Panasonic Energy" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/sunstar_logo.svg" alt="Sunstar" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/gobel_group_ecosystem/gobel_foundation_logo.svg" alt="Gobel Foundation" class="marquee-logo" /></div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CAREERS ═══════════════════════════ -->
+<section class="careers" id="careers">
+  <div class="careers-bg"></div>
+  <div class="careers-overlay"></div>
+  <div class="careers-inner reveal">
+    <p class="careers-tagline">
+      <a href="#" class="careers-link">Join our team</a> and take the next step toward excellence and growth.
+    </p>
   </div>
 </section>
 
@@ -1659,7 +1694,7 @@
   <div class="csr-inner">
 
     <div class="csr-header reveal">
-      <div class="section-tag" style="color:#56a443">Our Commitment</div>
+      <div class="section-tag" style="color:#3db54a">Our Commitment</div>
       <div class="gold-line"></div>
     </div>
 
@@ -1723,17 +1758,6 @@
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ CAREERS ═══════════════════════════ -->
-<section class="careers" id="careers">
-  <div class="careers-bg"></div>
-  <div class="careers-overlay"></div>
-  <div class="careers-inner reveal">
-    <p class="careers-tagline">
-      <a href="#" class="careers-link">Join our team</a> and take the next step toward excellence and growth.
-    </p>
   </div>
 </section>
 
