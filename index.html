@@ -161,136 +161,6 @@
       background: var(--dark-900);
     }
     /* Slide 2 — GoTrans */
-    .hero-slide--gotrans {
-      background: #07131f;
-    }
-    .gotrans-photo-bg {
-      position: absolute; inset: 0;
-      background-image: url('./brand_assets/photos/GLI_photo1.jpg');
-      background-size: cover;
-      background-position: center center;
-      filter: blur(1.5px) saturate(0.8);
-    }
-    /* Purple overlay for readability */
-    .gotrans-photo-bg::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(90, 48, 155, 0.84);
-    }
-    /* Dot pattern removed — replaced by canvas particles */
-    /* GoTrans layout — matches reference: label top-left, then 2-col (headline | body) */
-    .gotrans-layout {
-      position: relative; z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-      padding: 0 48px;
-      padding-top: 72px;
-      max-width: 1440px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    .gotrans-content-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .gotrans-col-left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .gotrans-label {
-      font-family: 'NHGText', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .gotrans-headline {
-      font-family: 'NHG', 'Neue Haas Grotesk Display', 'Helvetica Neue', Helvetica, sans-serif;
-      font-weight: 900;
-      font-size: clamp(48px, 5.8vw, 92px);
-      line-height: 1.0;
-      letter-spacing: -0.03em;
-      color: #ffffff;
-      margin: 0 0 28px 0;
-    }
-    .gotrans-body {
-      font-family: 'NHGText', sans-serif;
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.72);
-      margin: 0 0 36px 0;
-    }
-    .gotrans-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: 'NHGText', sans-serif;
-      font-weight: 700; font-size: 13px; letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      background: #F03F06;
-      padding: 14px 32px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .gotrans-cta:hover { background: #d43605; transform: translateY(-2px); }
-    .gotrans-col-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gotrans-logo-img {
-      max-width: 100%;
-      width: 420px;
-      opacity: 0.92;
-      filter: brightness(1.1);
-      drop-shadow: 0 8px 40px rgba(0,0,0,0.4);
-    }
-    /* Slider navigation */
-    .hero-slider-nav {
-      position: absolute;
-      bottom: 40px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; align-items: center; gap: 10px;
-      z-index: 10;
-    }
-    .hero-dot {
-      width: 28px; height: 3px;
-      background: rgba(255,255,255,0.25);
-      border: none; cursor: pointer;
-      transition: background 0.3s ease, width 0.3s ease;
-      padding: 0;
-    }
-    .hero-dot.active { background: var(--gold-medal); width: 52px; }
-    .hero-arrow {
-      position: absolute; top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff; width: 52px; height: 52px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .hero-arrow:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.3); }
-    .hero-arrow--prev { left: 32px; }
-    .hero-arrow--next { right: 32px; }
-    /* Slide counter */
-    .hero-slide-counter {
-      position: absolute;
-      bottom: 40px; right: 48px;
-      font-family: 'NHGText', sans-serif;
-      font-size: 11px; letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.3);
-      z-index: 10;
-    }
-    .hero-slide-counter .current { color: rgba(255,255,255,0.7); }
     .hero-bg-grain {
       position: absolute; inset: 0; z-index: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -1168,8 +1038,8 @@
       white-space: nowrap;
     }
     .careers-link:hover {
-      color: #56a443;
-      text-decoration-color: #56a443;
+      color: #c49a3c;
+      text-decoration-color: #c49a3c;
     }
 
     /* ─── Business Fields (Marquee) ─── */
@@ -1440,57 +1310,10 @@
       </div>
     </div>
 
-    <!-- ── Slide 2: GoTrans Logistics ── -->
-    <div class="hero-slide hero-slide--gotrans">
-      <div class="gotrans-photo-bg"></div>
-      <div class="gotrans-layout">
-        <div class="gotrans-content-cols">
-          <div class="gotrans-col-left">
-            <div class="gotrans-label">GoTrans Logistics International</div>
-            <h1 class="gotrans-headline">
-              Your Trusted<br />Logistic<br />Partner
-            </h1>
-            <p class="gotrans-body">
-              Founded in 2009, PT Gotrans Logistics International is part of Gobel Group, a business group that has pioneered industries in Indonesia for nearly seven decades. Leveraging this legacy and network, Gotrans provides comprehensive and reliable logistics services with a focus on efficiency, accuracy, and added value — serving customers across Indonesia and beyond.
-            </p>
-            <a href="#sectors" class="gotrans-cta">
-              Explore Our Business
-              <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div><!-- /hero-track -->
 
   <!-- Shared scroll hint -->
   <div class="hero-scroll-hint">Scroll to Explore</div>
-
-  <!-- Dot navigation -->
-  <div class="hero-slider-nav">
-    <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
-    <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
-  </div>
-
-  <!-- Prev / Next arrows -->
-  <button class="hero-arrow hero-arrow--prev" id="heroPrev" aria-label="Previous slide">
-    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-      <path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-  <button class="hero-arrow hero-arrow--next" id="heroNext" aria-label="Next slide">
-    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-      <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-
-  <!-- Slide counter -->
-  <div class="hero-slide-counter">
-    <span class="current" id="heroCurrentNum">01</span> / 02
-  </div>
 
 </section>
 
@@ -1975,67 +1798,7 @@
 <script>
   // ─── Cobe Globe — initialised from ESM module below ───
 
-  // ─── Hero Slider ───
-  (function() {
-    const track   = document.getElementById('heroTrack');
-    const dots    = document.querySelectorAll('.hero-dot');
-    const prevBtn = document.getElementById('heroPrev');
-    const nextBtn = document.getElementById('heroNext');
-    const counter = document.getElementById('heroCurrentNum');
-    const slider  = document.getElementById('heroSlider');
-    const TOTAL       = 2;
-    const DURATION_MS = 550; // must match CSS transition duration
-    let current   = 0;
-    let busy      = false;
-    let busyTimer = null;
-    let autoTimer = null;
-
-    function unlock() {
-      busy = false;
-      window._heroSliding = false;
-    }
-
-    function goTo(idx) {
-      if (busy) return;
-      const next = (idx + TOTAL) % TOTAL;
-      if (next === current) return;
-
-      busy = true;
-      window._heroSliding = true;           // signal parallax to skip layout reads
-      clearTimeout(busyTimer);
-
-      current = next;
-      track.style.transform = `translate3d(-${current * 100}%, 0, 0)`;
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
-      if (counter) counter.textContent = String(current + 1).padStart(2, '0');
-
-      // Primary: release on transitionend
-      // Fallback: release after duration + 80ms buffer if event never fires
-      busyTimer = setTimeout(unlock, DURATION_MS + 80);
-    }
-
-    track.addEventListener('transitionend', (e) => {
-      if (e.propertyName === 'transform') {
-        clearTimeout(busyTimer);
-        unlock();
-      }
-    });
-
-    function startAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(() => goTo(current + 1), 6000);
-    }
-
-    prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
-    nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
-    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); startAuto(); }));
-
-    slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
-    slider.addEventListener('mouseleave', startAuto);
-
-    window._heroSliding = false;
-    startAuto();
-  })();
+  window._heroSliding = false;
 
   // ─── Scroll nav ───
   const nav = document.getElementById('main-nav');
@@ -2513,11 +2276,10 @@
   const heroRadial  = document.querySelector('.hero-bg-radial');
   const heroContent = document.querySelector('.hero-content');
   const heroVisual  = document.querySelector('.hero-visual');
-  const gotransBg   = document.querySelector('.gotrans-photo-bg');
   const annivPhoto  = document.getElementById('annivPhotoPanel');
   const careersBg   = document.querySelector('.careers-bg');
 
-  // GPU hints — exclude gotransBg to avoid compositor conflict with slide track
+  // GPU hints
   [heroGrain, heroRadial, heroContent, heroVisual]
     .forEach(el => { if (el) el.style.willChange = 'transform'; });
   [annivPhoto, careersBg]
@@ -2535,13 +2297,6 @@
       if (heroRadial)  heroRadial.style.transform   = `translateY(${scrollY * 0.30}px)`;
       if (heroContent) heroContent.style.transform  = `translateY(${scrollY * -0.10}px)`;
       if (heroVisual)  heroVisual.style.transform   = `translateY(${scrollY * -0.16}px)`;
-    }
-
-    // ── GoTrans photo background — skip during slide transition to avoid layout thrash ──
-    if (gotransBg && !window._heroSliding) {
-      const r = gotransBg.getBoundingClientRect();
-      const offset = (r.top + r.height / 2 - vh / 2) * 0.22;
-      gotransBg.style.transform = `translateY(${offset}px)`;
     }
 
     // ── Anniversary photo panel — background-position (safe: element has CSS translateX) ──
