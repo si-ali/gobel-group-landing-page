@@ -1261,6 +1261,102 @@
       .csr-pillars, .footer-top { grid-template-columns: 1fr; }
       .about, .sectors, .anniversary, .csr, .news, .footer { padding: 80px 24px; }
       .anniversary-left, .anniversary-right { padding: 64px 24px; }
+      .promo-card { flex: 0 0 calc((100% - 16px) / 2) !important; } /* 2 on tablet */
+      .promo-inner { padding: 0 16px; }
+    }
+
+    /* ─── Exclusive Promotions Strip ─── */
+    .promo-strip {
+      background: var(--cream);
+      padding: 44px 0 40px;
+    }
+    .promo-inner {
+      max-width: 1141px; margin: 0 auto;
+      padding: 0;
+    }
+    .promo-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .promo-header .section-tag {
+      justify-content: center;
+    }
+    .promo-header .section-tag::before { display: none; }
+    .promo-carousel-wrap {
+      position: relative;
+    }
+    .promo-viewport {
+      width: 1141px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .promo-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .promo-card {
+      flex: 0 0 calc((100% - 32px) / 3);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .promo-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 16px 48px rgba(180,136,70,0.18), 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .promo-card img {
+      width: 100%;
+      aspect-ratio: 1376 / 768;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .promo-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(180,136,70,0.35);
+      background: rgba(255,243,236,0.95);
+      color: var(--gold-medal);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .promo-nav--prev { left: -22px; }
+    .promo-nav--next { right: -22px; }
+    .promo-nav:hover {
+      background: var(--gold-medal);
+      color: #fff;
+      border-color: var(--gold-medal);
+    }
+    .promo-nav:active { transform: translateY(-50%) scale(0.92); }
+    .promo-nav:disabled { opacity: 0.28; cursor: default; pointer-events: none; }
+    .promo-progress-wrap {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .promo-progress-track {
+      width: 200px; height: 2px;
+      background: rgba(180,136,70,0.18);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .promo-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-ore), var(--gold-medal));
+      border-radius: 2px;
+      transition: width 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
     }
   </style>
 </head>
@@ -1338,6 +1434,55 @@
 
 <!-- ═══════════════════════════ HERO DIVIDER ═══════════════════════════ -->
 <div class="hero-divider"></div>
+
+<!-- ═══════════════════════════ EXCLUSIVE PROMOTIONS ═══════════════════════════ -->
+<section class="promo-strip" id="promotions">
+  <div class="promo-inner">
+    <div class="promo-header">
+      <span class="section-tag">Exclusive Promotions</span>
+    </div>
+    <div class="promo-carousel-wrap">
+      <!-- Prev arrow -->
+      <button class="promo-nav promo-nav--prev" id="promoPrev" aria-label="Previous promotion">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <!-- Viewport -->
+      <div class="promo-viewport" id="promoViewport">
+        <div class="promo-track" id="promoTrack">
+          <div class="promo-card">
+            <img src="./design_references/best_deals/landscape_panasonic_ramadan_promo_banner.png" alt="Panasonic Ramadan Promo" loading="lazy">
+          </div>
+          <div class="promo-card">
+            <img src="./design_references/best_deals/opus_park_luxury_real_estate_banner.png" alt="Opus Park — The Quiet Side of City Living" loading="lazy">
+          </div>
+          <div class="promo-card">
+            <img src="./design_references/best_deals/gobel_70_years_ramadan_giveaway_banner.png" alt="Gobel 70 Tahun Giveaway Ramadan" loading="lazy">
+          </div>
+          <div class="promo-card">
+            <img src="./design_references/best_deals/chaterais_iftar_promo_banner.png" alt="Châteraisé Iftar Promo 15% Off" loading="lazy">
+          </div>
+          <div class="promo-card">
+            <img src="./design_references/best_deals/chaterais_gift_box_promotion_banner.png" alt="Châteraisé Sincerity in Every Gift" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <!-- Next arrow -->
+      <button class="promo-nav promo-nav--next" id="promoNext" aria-label="Next promotion">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Progress bar -->
+    <div class="promo-progress-wrap">
+      <div class="promo-progress-track">
+        <div class="promo-progress-fill" id="promoProgressFill"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════ 70TH ANNIVERSARY ═══════════════════════════ -->
 <section class="anniversary" id="anniversary">
@@ -2345,6 +2490,49 @@
   }, { passive: true });
 
   update(); // set initial positions
+})();
+</script>
+
+<script>
+// ─── Exclusive Promotions Carousel ───
+(function() {
+  const track    = document.getElementById('promoTrack');
+  const viewport = document.getElementById('promoViewport');
+  const btnPrev  = document.getElementById('promoPrev');
+  const btnNext  = document.getElementById('promoNext');
+  const fill     = document.getElementById('promoProgressFill');
+  if (!track) return;
+
+  const cards   = Array.from(track.querySelectorAll('.promo-card'));
+  const total   = cards.length;
+  const visible = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  const maxIdx  = Math.max(0, total - visible);
+  let current   = 0;
+
+  function getStep() {
+    if (!cards[0]) return 0;
+    return cards[0].offsetWidth + 16; // card width + gap
+  }
+
+  function updateCarousel() {
+    track.style.transform = `translate3d(-${current * getStep()}px, 0, 0)`;
+    const pct = maxIdx > 0 ? (current / maxIdx) * 100 : 100;
+    fill.style.width = pct + '%';
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current >= maxIdx;
+  }
+
+  btnPrev.addEventListener('click', function() {
+    if (current > 0) { current--; updateCarousel(); }
+  });
+  btnNext.addEventListener('click', function() {
+    if (current < maxIdx) { current++; updateCarousel(); }
+  });
+
+  // Recalc on resize
+  window.addEventListener('resize', function() { updateCarousel(); }, { passive: true });
+
+  updateCarousel();
 })();
 </script>
 
