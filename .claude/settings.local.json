@@ -30,7 +30,8 @@
       "Bash(node screenshot.mjs http://localhost:3000 hires)",
       "Bash(node screenshot-section.mjs http://localhost:3000 5500 bizfields)",
       "Bash(node screenshot.mjs http://localhost:3000 bizfields-final)",
-      "Bash(node screenshot-section.mjs http://localhost:3000 1800 bizfields-new)"
+      "Bash(node screenshot-section.mjs http://localhost:3000 1800 bizfields-new)",
+      "Bash(open http://localhost:3000)"
     ]
   }
 }
