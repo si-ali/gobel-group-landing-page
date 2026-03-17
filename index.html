@@ -2238,8 +2238,8 @@
   // Island anchor coordinates
   const LABELS = [
     { lat:  0.0, lng: 101.5, num: '50K+', title: 'Employees',      desc: 'Workforce Across Indonesia',    yOffset: -90 }, // Sumatra
-    { lat: -7.0, lng: 110.0, num: '40+',  title: 'Business Lines', desc: 'Diversified Business Portfolio' }, // Java
-    { lat: -2.0, lng: 121.0, num: '27',   title: 'Provinces',      desc: 'Operational Reach Nusantara'   }, // Sulawesi
+    { lat: -7.0, lng: 110.0, num: '40+',  title: 'Business Lines', desc: 'Diversified Business Portfolio', xOffset: 40 }, // Java
+    { lat:  1.0, lng: 115.0, num: '27',   title: 'Provinces',      desc: 'Operational Reach Nusantara',   xOffset: 65, yOffset: -40 }, // Kalimantan
   ];
 
   // Projection — matches cobe's internal marker convention exactly:
@@ -2289,7 +2289,7 @@
       const boxH = NUM_SZ + GAP + TITLE_SZ + GAP + DESC_SZ + PAD_V * 2;
 
       // Position box above-right of anchor (shift left if near right edge)
-      const bx = (ax + boxW + 10 > SIZE) ? ax - boxW - 6 : ax + 6;
+      const bx = ((ax + boxW + 10 > SIZE) ? ax - boxW - 6 : ax + 6) + (lb.xOffset || 0);
       const by = ay - boxH - 6 + (lb.yOffset || 0);
 
       // Glow behind anchor dot
