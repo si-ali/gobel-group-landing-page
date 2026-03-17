@@ -1860,15 +1860,15 @@
       <div class="csr-top-right">
         <div class="csr-stats">
           <div class="csr-stat-item">
-            <div class="csr-stat-num">50K+</div>
+            <div class="csr-stat-num" data-count="50" data-suffix="K+"><span class="stat-num">0</span><span class="stat-suffix">K+</span></div>
             <div class="csr-stat-label">Students supported through scholarships</div>
           </div>
           <div class="csr-stat-item">
-            <div class="csr-stat-num">200+</div>
+            <div class="csr-stat-num" data-count="200" data-suffix="+"><span class="stat-num">0</span><span class="stat-suffix">+</span></div>
             <div class="csr-stat-label">Communities reached through CSR programs</div>
           </div>
           <div class="csr-stat-item">
-            <div class="csr-stat-num">70</div>
+            <div class="csr-stat-num" data-count="70" data-suffix=""><span class="stat-num">0</span></div>
             <div class="csr-stat-label">Years of dedicated nation-building</div>
           </div>
         </div>
@@ -2041,6 +2041,8 @@
 
     const aboutSection = document.querySelector('#about');
     if (aboutSection) sectionIO.observe(aboutSection);
+    const csrSection = document.querySelector('#csr');
+    if (csrSection) sectionIO.observe(csrSection);
   })();
 
   // ─── 70th Anniversary: scroll reveals ───
@@ -2319,7 +2321,7 @@
 
       // Dark background box
       ctx2d.fillStyle = 'rgba(9,7,4,0.82)';
-      ctx2d.beginPath(); ctx2d.roundRect(bx, by, boxW, boxH, 5); ctx2d.fill();
+      ctx2d.beginPath(); ctx2d.rect(bx, by, boxW, boxH); ctx2d.fill();
 
       // Gold left accent bar
       const barX = bx > ax ? bx + 1.5 : bx + boxW - 1.5;
