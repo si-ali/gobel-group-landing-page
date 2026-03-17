@@ -1982,69 +1982,34 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => io.observe(el));
 
-  // ─── Countup animation for Gobel in Numbers (loops while section is visible) ───
+  // ─── Countup animation for Gobel in Numbers (plays once on scroll into view) ───
   (function() {
-    const CYCLE_DURATION = 1800;  // count-up duration ms
-    const HOLD_DURATION  = 1200;  // pause at target before restarting ms
+    const DURATION = 1800;
 
     function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
 
-    // Per-element animation state
-    const states = new Map(); // el → { raf, timeout, active }
+    const countEls = document.querySelectorAll('[data-count]');
+    const done = new Set();
 
-    function startCycle(el) {
-      const state = states.get(el);
-      if (!state || !state.active) return;
-
+    function runCount(el) {
+      if (done.has(el)) return;
+      done.add(el);
       const target = parseInt(el.dataset.count, 10);
       const numEl  = el.querySelector('.stat-num');
       if (!numEl) return;
-
       const begin = performance.now();
       function tick(now) {
-        if (!states.get(el)?.active) return;
-        const progress = Math.min((now - begin) / CYCLE_DURATION, 1);
+        const progress = Math.min((now - begin) / DURATION, 1);
         numEl.textContent = Math.round(easeOutQuart(progress) * target);
-        if (progress < 1) {
-          state.raf = requestAnimationFrame(tick);
-        } else {
-          numEl.textContent = target;
-          // Hold at target, then restart
-          state.timeout = setTimeout(() => startCycle(el), HOLD_DURATION);
-        }
+        if (progress < 1) requestAnimationFrame(tick);
+        else numEl.textContent = target;
       }
-      state.raf = requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
     }
-
-    function stopCycle(el) {
-      const state = states.get(el);
-      if (!state) return;
-      state.active = false;
-      cancelAnimationFrame(state.raf);
-      clearTimeout(state.timeout);
-      // Reset display to 0 so next entry starts fresh
-      const numEl = el.querySelector('.stat-num');
-      if (numEl) numEl.textContent = '0';
-    }
-
-    const countEls = document.querySelectorAll('[data-count]');
-    countEls.forEach(el => states.set(el, { raf: null, timeout: null, active: false }));
 
     const sectionIO = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          // Section entered — start all counters
-          countEls.forEach(el => {
-            const state = states.get(el);
-            if (!state.active) {
-              state.active = true;
-              startCycle(el);
-            }
-          });
-        } else {
-          // Section left — stop all counters
-          countEls.forEach(el => stopCycle(el));
-        }
+        if (e.isIntersecting) countEls.forEach(runCount);
       });
     }, { threshold: 0.2 });
 
@@ -2214,7 +2179,7 @@
 
 </script>
 
-<!-- ─── Cobe Interactive 3D Globe ─── -->
+<!-- ─── Cobe Interactive 3D Globe — 27 Indonesian provinces + arc connections ─── -->
 <script type="module">
   import createGlobe from 'https://esm.sh/cobe@0.6.3';
 
@@ -2227,84 +2192,250 @@
   canvas.style.width  = SIZE + 'px';
   canvas.style.height = SIZE + 'px';
 
-  // Indonesia-centred start: lon 118°E
-  // cobe phi=0 → faces ~0°lon; to get 118°E front-and-centre:
-  // phi = -(118 / 180) * Math.PI ≈ -2.06  (rotate westward so 118E faces you)
-  let phi   = -2.06;
-  let theta = 0.18;   // slight northern tilt
-  let spinning = true;
+  // ── Wrap canvas so labels can be absolutely positioned over it ──
+  const container = document.createElement('div');
+  container.style.cssText = `position:relative;width:${SIZE}px;height:${SIZE}px;display:inline-block;`;
+  canvas.parentNode.replaceChild(container, canvas);
+  container.appendChild(canvas);
 
-  // Markers: Indonesia cities + neighbours
-  const markers = [
-    { location: [-6.21, 106.85], size: 0.10 },  // Jakarta
-    { location: [ 3.59,  98.67], size: 0.07 },  // Medan
-    { location: [-5.14, 119.41], size: 0.07 },  // Makassar
-    { location: [-8.67, 115.21], size: 0.06 },  // Bali
-    { location: [ 1.47, 124.84], size: 0.06 },  // Manado
-    { location: [-2.53, 140.72], size: 0.05 },  // Jayapura
-    { location: [ 1.29, 103.85], size: 0.05 },  // Singapore
-    { location: [13.75, 100.52], size: 0.04 },  // Bangkok
-    { location: [35.69, 139.69], size: 0.04 },  // Tokyo
+  // ── Canvas overlay — labels follow globe movement ──
+  const ov = document.createElement('canvas');
+  ov.width  = SIZE * DPR;
+  ov.height = SIZE * DPR;
+  ov.style.cssText = `position:absolute;top:0;left:0;width:${SIZE}px;height:${SIZE}px;pointer-events:none;`;
+  container.appendChild(ov);
+  const ctx2d = ov.getContext('2d');
+  ctx2d.scale(DPR, DPR);
+
+  const CX = SIZE / 2, CY = SIZE / 2, R = SIZE / 2;
+
+  // Island anchor coordinates
+  const LABELS = [
+    { lat:  0.0, lng: 101.5, num: '50K+', title: 'Employees',      desc: 'Workforce Across Indonesia'    }, // Sumatra
+    { lat: -7.0, lng: 110.0, num: '40+',  title: 'Business Lines', desc: 'Diversified Business Portfolio' }, // Java
+    { lat: -2.0, lng: 121.0, num: '27',   title: 'Provinces',      desc: 'Operational Reach Nusantara'   }, // Sulawesi
   ];
+
+  // Projection — matches cobe's internal marker convention exactly:
+  // cobe stores marker as [-cos(lat)*cos(lng-PI), sin(lat), cos(lat)*sin(lng-PI)]
+  //                      = [cos(lat)*cos(lng),    sin(lat), -cos(lat)*sin(lng)]
+  // cobe applies:  g = f * L(theta, phi)  →  screen_pos = r * L^T
+  // which gives:  x_screen = r.x*cos(phi) + r.z*sin(phi)  (formula B)
+  function ll3d(lat, lng) {
+    const lr = lat * Math.PI / 180, nr = lng * Math.PI / 180;
+    const r = Math.cos(lr);
+    return { x: r * Math.cos(nr), y: Math.sin(lr), z: -r * Math.sin(nr) };
+  }
+  function rotPt(p, phi, theta) {
+    const x1 = p.x*Math.cos(phi) + p.z*Math.sin(phi);
+    const z1 = -p.x*Math.sin(phi) + p.z*Math.cos(phi);
+    const y2 = p.y*Math.cos(theta) - z1*Math.sin(theta);
+    const z2 = p.y*Math.sin(theta) + z1*Math.cos(theta);
+    return { x: x1, y: y2, z: z2 };
+  }
+
+  // Label constants
+  const NUM_SZ   = 28, TITLE_SZ = 12, DESC_SZ = 10;
+  const PAD_H = 13, PAD_V = 9, GAP = 4;
+
+  function drawLabels(phi, theta) {
+    ctx2d.clearRect(0, 0, SIZE, SIZE);
+    for (const lb of LABELS) {
+      const rp = rotPt(ll3d(lb.lat, lb.lng), phi, theta);
+      if (rp.z < 0.1) continue;
+      const alpha = Math.min(1, (rp.z - 0.1) / 0.2);
+
+      const ax = CX + rp.x * R;   // anchor dot screen x
+      const ay = CY - rp.y * R;   // anchor dot screen y
+
+      ctx2d.save();
+      ctx2d.globalAlpha = alpha;
+
+      // Measure text for box sizing
+      ctx2d.font = `800 ${NUM_SZ}px NHG, sans-serif`;
+      const nW = ctx2d.measureText(lb.num).width;
+      ctx2d.font = `700 ${TITLE_SZ}px NHGText, sans-serif`;
+      const tW = ctx2d.measureText(lb.title.toUpperCase()).width;
+      ctx2d.font = `400 ${DESC_SZ}px NHGText, sans-serif`;
+      const dW = ctx2d.measureText(lb.desc).width;
+
+      const boxW = Math.max(nW, tW, dW) + PAD_H * 2;
+      const boxH = NUM_SZ + GAP + TITLE_SZ + GAP + DESC_SZ + PAD_V * 2;
+
+      // Position box above-right of anchor (shift left if near right edge)
+      const bx = (ax + boxW + 10 > SIZE) ? ax - boxW - 6 : ax + 6;
+      const by = ay - boxH - 6;
+
+      // Glow behind anchor dot
+      const grd = ctx2d.createRadialGradient(ax, ay, 0, ax, ay, 14);
+      grd.addColorStop(0, 'rgba(212,168,75,0.5)');
+      grd.addColorStop(1, 'rgba(212,168,75,0)');
+      ctx2d.fillStyle = grd;
+      ctx2d.beginPath(); ctx2d.arc(ax, ay, 14, 0, Math.PI * 2); ctx2d.fill();
+
+      // Dot ring
+      ctx2d.strokeStyle = 'rgba(212,168,75,0.8)';
+      ctx2d.lineWidth = 1.5;
+      ctx2d.beginPath(); ctx2d.arc(ax, ay, 5.5, 0, Math.PI * 2); ctx2d.stroke();
+
+      // Filled dot
+      ctx2d.fillStyle = '#d4a84b';
+      ctx2d.beginPath(); ctx2d.arc(ax, ay, 3, 0, Math.PI * 2); ctx2d.fill();
+
+      // Leader line from dot to box corner
+      const lineX = bx > ax ? bx : bx + boxW;
+      const lineY = by + boxH;
+      ctx2d.strokeStyle = 'rgba(212,168,75,0.5)';
+      ctx2d.lineWidth = 0.9;
+      ctx2d.setLineDash([3, 3]);
+      ctx2d.beginPath(); ctx2d.moveTo(ax, ay); ctx2d.lineTo(lineX, lineY); ctx2d.stroke();
+      ctx2d.setLineDash([]);
+
+      // Dark background box
+      ctx2d.fillStyle = 'rgba(9,7,4,0.82)';
+      ctx2d.beginPath(); ctx2d.roundRect(bx, by, boxW, boxH, 5); ctx2d.fill();
+
+      // Gold left accent bar
+      const barX = bx > ax ? bx + 1.5 : bx + boxW - 1.5;
+      ctx2d.strokeStyle = 'rgba(212,168,75,0.85)';
+      ctx2d.lineWidth = 2.5;
+      ctx2d.beginPath();
+      ctx2d.moveTo(barX, by + 6);
+      ctx2d.lineTo(barX, by + boxH - 6);
+      ctx2d.stroke();
+
+      // Text
+      const align  = bx > ax ? 'left' : 'right';
+      const textX  = bx > ax ? bx + PAD_H : bx + boxW - PAD_H;
+      ctx2d.textAlign    = align;
+      ctx2d.textBaseline = 'alphabetic';
+      const y0 = by + PAD_V;
+
+      ctx2d.font = `800 ${NUM_SZ}px NHG, sans-serif`;
+      ctx2d.fillStyle = '#d4a84b';
+      ctx2d.fillText(lb.num, textX, y0 + NUM_SZ);
+
+      ctx2d.font = `700 ${TITLE_SZ}px NHGText, sans-serif`;
+      ctx2d.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx2d.fillText(lb.title.toUpperCase(), textX, y0 + NUM_SZ + GAP + TITLE_SZ);
+
+      ctx2d.font = `400 ${DESC_SZ}px NHGText, sans-serif`;
+      ctx2d.fillStyle = 'rgba(255,255,255,0.48)';
+      ctx2d.fillText(lb.desc, textX, y0 + NUM_SZ + GAP + TITLE_SZ + GAP + DESC_SZ);
+
+      ctx2d.restore();
+    }
+  }
+
+  // ── 27 Indonesian province capitals / major cities ──
+  // idx: 0=BandaAceh 1=Medan 2=Padang 3=Pekanbaru 4=Jambi 5=Bengkulu
+  //      6=Palembang 7=BandarLampung 8=Jakarta 9=Bandung 10=Semarang
+  //     11=Yogyakarta 12=Surabaya 13=Denpasar 14=Mataram 15=Kupang
+  //     16=Pontianak 17=Banjarmasin 18=Samarinda 19=Makassar 20=Kendari
+  //     21=Gorontalo 22=Manado 23=Ternate 24=Ambon 25=Sorong 26=Jayapura
+  const MARKERS = [
+    { location: [ 5.55,  95.32], size: 0.05 },  //  0 Banda Aceh
+    { location: [ 3.59,  98.67], size: 0.07 },  //  1 Medan
+    { location: [-0.95, 100.35], size: 0.05 },  //  2 Padang
+    { location: [ 0.51, 101.45], size: 0.05 },  //  3 Pekanbaru
+    { location: [-1.61, 103.62], size: 0.05 },  //  4 Jambi
+    { location: [-3.80, 102.27], size: 0.05 },  //  5 Bengkulu
+    { location: [-2.99, 104.76], size: 0.06 },  //  6 Palembang
+    { location: [-5.45, 105.26], size: 0.05 },  //  7 Bandar Lampung
+    { location: [-6.21, 106.85], size: 0.10 },  //  8 Jakarta ★
+    { location: [-6.92, 107.61], size: 0.06 },  //  9 Bandung
+    { location: [-6.97, 110.42], size: 0.06 },  // 10 Semarang
+    { location: [-7.80, 110.37], size: 0.05 },  // 11 Yogyakarta
+    { location: [-7.25, 112.75], size: 0.07 },  // 12 Surabaya
+    { location: [-8.67, 115.21], size: 0.06 },  // 13 Denpasar/Bali
+    { location: [-8.58, 116.12], size: 0.05 },  // 14 Mataram
+    { location:[-10.17, 123.61], size: 0.05 },  // 15 Kupang
+    { location: [-0.02, 109.34], size: 0.05 },  // 16 Pontianak
+    { location: [-3.32, 114.59], size: 0.05 },  // 17 Banjarmasin
+    { location: [-0.50, 117.15], size: 0.06 },  // 18 Samarinda
+    { location: [-5.14, 119.41], size: 0.07 },  // 19 Makassar ★
+    { location: [-3.97, 122.51], size: 0.05 },  // 20 Kendari
+    { location: [ 0.54, 123.06], size: 0.05 },  // 21 Gorontalo
+    { location: [ 1.47, 124.84], size: 0.06 },  // 22 Manado
+    { location: [ 0.79, 127.38], size: 0.05 },  // 23 Ternate
+    { location: [-3.65, 128.19], size: 0.05 },  // 24 Ambon
+    { location: [-0.87, 131.25], size: 0.05 },  // 25 Sorong
+    { location: [-2.53, 140.72], size: 0.06 },  // 26 Jayapura
+  ];
+
+  // ── Indonesia longitude bounds ──
+  // cobe phi convention: center_longitude = 270° - phi*(180/π)
+  // → phi = (270 - lng_deg) * π/180
+  // Aceh west 93°E → phi=3.089  |  Papua east 141°E → phi=2.251
+  const PHI_MIN = (270 - 141) * Math.PI / 180;  // 2.251 rad — Papua/east bound
+  const PHI_MAX = (270 -  93) * Math.PI / 180;  // 3.089 rad — Aceh/west bound
+
+  // ── Globe state — starts centred on Indonesia (118°E) ──
+  let phi     = (270 - 118) * Math.PI / 180;  // 2.653 rad — Indonesia centre
+  const theta = 0.18;
+  let phiDir  =  1;    // +1 = moving toward Aceh (west, increasing phi)
+  let autoPlay = true;
 
   const globe = createGlobe(canvas, {
     devicePixelRatio: DPR,
     width:  SIZE * DPR,
     height: SIZE * DPR,
-    phi,
-    theta,
+    phi, theta,
     dark: 1,
     diffuse: 1.6,
     mapSamples: 22000,
     mapBrightness: 9,
-    baseColor:   [0.12, 0.09, 0.05],   // warm dark brown — matches #1e170d
-    markerColor: [0.85, 0.60, 0.20],   // gold #d99933
-    glowColor:   [0.65, 0.46, 0.16],   // gold glow
-    markers,
+    baseColor:   [0.12, 0.09, 0.05],
+    markerColor: [0.85, 0.60, 0.20],
+    glowColor:   [0.65, 0.46, 0.16],
+    markers: MARKERS,
     onRender(state) {
-      if (spinning) phi += 0.003;
+      if (autoPlay) {
+        phi += 0.003 * phiDir;
+        // Bounce at Indonesia boundaries
+        if (phi >= PHI_MAX) { phi = PHI_MAX; phiDir = -1; }
+        if (phi <= PHI_MIN) { phi = PHI_MIN; phiDir =  1; }
+      }
+      // Always clamp — prevents drag from leaving Indonesia
+      phi = Math.max(PHI_MIN, Math.min(PHI_MAX, phi));
       state.phi   = phi;
       state.theta = theta;
+      drawLabels(phi, theta);
     },
   });
 
-  // ── Drag interaction ──
-  let dragging = false, lastX = 0, lastY = 0;
+  // ── Drag: horizontal only, clamped to Indonesia ──
+  let dragging = false, lastX = 0;
 
   canvas.addEventListener('mousedown', e => {
-    dragging = true; spinning = false;
-    lastX = e.clientX; lastY = e.clientY;
+    dragging = true; autoPlay = false;
+    lastX = e.clientX;
   });
-  window.addEventListener('mouseup', () => { dragging = false; });
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+    setTimeout(() => { autoPlay = true; }, 2000);
+  });
   window.addEventListener('mousemove', e => {
     if (!dragging) return;
-    phi   -= (e.clientX - lastX) * 0.006;
-    theta  = Math.max(-1.4, Math.min(1.4, theta + (e.clientY - lastY) * 0.006));
-    lastX = e.clientX; lastY = e.clientY;
-  });
-
-  // Resume auto-spin 3 s after releasing the mouse
-  window.addEventListener('mouseup', () => {
-    setTimeout(() => { spinning = true; }, 3000);
+    phi  -= (e.clientX - lastX) * 0.006;
+    lastX = e.clientX;
   });
 
   // Touch support
   canvas.addEventListener('touchstart', e => {
-    dragging = true; spinning = false;
-    lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+    dragging = true; autoPlay = false;
+    lastX = e.touches[0].clientX;
   }, { passive: true });
   window.addEventListener('touchend', () => {
     dragging = false;
-    setTimeout(() => { spinning = true; }, 3000);
+    setTimeout(() => { autoPlay = true; }, 2000);
   });
   window.addEventListener('touchmove', e => {
     if (!dragging) return;
-    phi   -= (e.touches[0].clientX - lastX) * 0.006;
-    theta  = Math.max(-1.4, Math.min(1.4, theta + (e.touches[0].clientY - lastY) * 0.006));
-    lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+    phi  -= (e.touches[0].clientX - lastX) * 0.006;
+    lastX = e.touches[0].clientX;
   }, { passive: true });
 
-  // Clean up on page unload
   window.addEventListener('beforeunload', () => globe.destroy());
 </script>
 
