@@ -807,7 +807,7 @@
     /* ─── CSR / Sustainability ─── */
     .csr {
       background: #f0faf3;
-      padding: 120px 48px;
+      padding: 72px 48px;
       position: relative;
       overflow: hidden;
     }
@@ -837,7 +837,7 @@
       margin: 0 auto;
       position: relative; z-index: 1;
     }
-    .csr-header { margin-bottom: 40px; }
+    .csr-header { margin-bottom: 24px; }
     /* Override decorative line color inside CSR */
     .about .gold-line { margin-left: auto; margin-right: auto; }
     .about .section-tag { justify-content: center; }
@@ -848,9 +848,9 @@
     .csr-top {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-      margin-bottom: 56px;
+      gap: 40px;
+      align-items: stretch;
+      margin-bottom: 32px;
     }
     .csr-top-left { display: flex; flex-direction: column; }
     .csr-headline {
@@ -877,7 +877,7 @@
     }
     .csr-pledge-text {
       font-family: 'NHGText', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       color: rgba(15,35,24,0.45);
       line-height: 1.65;
       font-style: italic;
@@ -886,15 +886,32 @@
     /* ── Stats panel (right side of top) ── */
     .csr-top-right {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      flex-direction: row;
+      gap: 2px;
+      align-items: stretch;
+      height: 100%;
+    }
+    .csr-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      flex: 1 1 0;
+      min-height: 0;
+    }
+    .csr-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     .csr-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
       overflow: hidden;
       background: #1a512a;
       position: relative;
+      flex: 0 0 300px;
     }
     .csr-stats::before {
       content: '';
@@ -928,26 +945,27 @@
       z-index: 0;
     }
     .csr-stat-item {
-      padding: 28px 24px;
-      border-right: 1px solid rgba(255,255,255,0.25);
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      justify-content: center;
+      gap: 4px;
       position: relative;
       z-index: 1;
     }
-    .csr-stat-item:last-child { border-right: none; }
+    .csr-stat-item:last-child { border-bottom: none; }
     .csr-stat-num {
       font-family: 'NHG', sans-serif;
       font-weight: 900;
-      font-size: clamp(36px, 3vw, 46px);
+      font-size: clamp(22px, 1.8vw, 28px);
       color: #ffffff;
       letter-spacing: -0.04em;
       line-height: 1;
     }
     .csr-stat-label {
       font-family: 'NHGText', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       color: rgba(255,255,255,0.75);
       line-height: 1.5;
     }
@@ -962,15 +980,15 @@
       border: 1px solid rgba(86,164,67,0.30);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      padding: 40px 32px;
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
       gap: 0;
     }
     .csr-pillar-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 28px;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 16px;
       flex-shrink: 0;
       color: #1a512a;
     }
@@ -979,7 +997,7 @@
       font-weight: 700;
       font-size: 18px;
       letter-spacing: -0.01em;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       color: #0f2318;
     }
     .csr-pillar-body {
@@ -1858,6 +1876,9 @@
       </div>
 
       <div class="csr-top-right">
+        <div class="csr-image-wrapper">
+          <img src="./brand_assets/photos/Food-Hospitality-Image.jpg" alt="GOBEL CSR — Community Empowerment" />
+        </div>
         <div class="csr-stats">
           <div class="csr-stat-item">
             <div class="csr-stat-num" data-count="50" data-suffix="K+"><span class="stat-num">0</span><span class="stat-suffix">K+</span></div>
