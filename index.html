@@ -530,6 +530,183 @@
       color: var(--gold-medal);
       font-size: 20px;
     }
+    /* ── Sector tabs ── */
+    .sectors-tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 48px;
+    }
+    .sectors-tab-btn {
+      font-family: 'NHG', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 18px 32px 18px 0;
+      margin-right: 32px;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: color 0.3s ease, border-color 0.3s ease;
+      white-space: nowrap;
+    }
+    .sectors-tab-btn:hover:not(.active) { color: rgba(255,255,255,0.6); }
+    .sectors-tab-btn.active {
+      color: var(--gold-medal);
+      border-bottom-color: var(--gold-medal);
+    }
+    .sectors-tab-panels { position: relative; }
+    .sectors-tab-panel {
+      display: none;
+      animation: tabFadeIn 0.35s ease;
+    }
+    .sectors-tab-panel.active { display: block; }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* ── Category banner (desc + visual) ── */
+    .sectors-cat-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--dark-800);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 40px 48px;
+      margin-bottom: 2px;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      text-decoration: none;
+    }
+    .sectors-cat-banner:hover {
+      background: var(--dark-700);
+      border-color: rgba(255,255,255,0.10);
+    }
+    .sectors-cat-banner-text {
+      flex: 1;
+      max-width: 560px;
+    }
+    .sectors-cat-banner-title {
+      font-family: 'NHG', sans-serif;
+      font-weight: 900;
+      font-size: clamp(26px, 2.2vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+    .sectors-cat-banner-desc {
+      font-family: 'NHGText', sans-serif;
+      font-size: 14px;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin-bottom: 24px;
+    }
+    .sectors-cat-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-medal);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .sectors-cat-cta-arrow {
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+    .sectors-cat-banner:hover .sectors-cat-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .sectors-cat-banner:hover .sectors-cat-cta-arrow {
+      transform: translateX(4px);
+    }
+    .sectors-cat-visual {
+      flex: 0 0 auto;
+      align-self: center;
+      height: 160px;
+      width: auto;
+      opacity: 0.65;
+      display: block;
+      margin-left: 32px;
+      transition: opacity 0.3s ease;
+    }
+    .sectors-cat-banner:hover .sectors-cat-visual { opacity: 0.9; }
+    /* ── Company cards grid ── */
+    .sectors-co-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+    .sectors-co-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.09);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.28s ease, border-color 0.28s ease;
+      text-decoration: none;
+    }
+    .sectors-co-card:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .sectors-co-arrow {
+      position: absolute;
+      top: 36px;
+      right: 32px;
+      color: var(--gold-medal);
+      font-size: 18px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+    .sectors-co-card:hover .sectors-co-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .sectors-co-index {
+      font-family: 'NHGText', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.22);
+      text-transform: uppercase;
+    }
+    .sectors-co-name {
+      font-family: 'NHG', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+    .sectors-co-code {
+      font-family: 'NHGText', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--gold-medal);
+      margin-top: 2px;
+    }
 
     /* ─── 70th Anniversary ─── */
     .anniversary {
@@ -1605,105 +1782,146 @@
         Indonesia's economy and everyday life.
       </p>
     </div>
-    <div class="sectors-grid">
+    <!-- Tab bar -->
+    <div class="sectors-tab-bar">
+      <button class="sectors-tab-btn active" data-cat="food">Food &amp; Hospitality</button>
+      <button class="sectors-tab-btn" data-cat="trading">Trading &amp; Services</button>
+      <button class="sectors-tab-btn" data-cat="manufacturing">Manufacturing</button>
+      <button class="sectors-tab-btn" data-cat="property">Property</button>
+    </div>
 
-      <!-- Electronics -->
-      <div class="sector-card reveal">
-        <span class="sector-arrow">→</span>
-        <div class="sector-icon-wrap">
-          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
-            <rect x="2" y="6" width="28" height="18" rx="1"/>
-            <line x1="9" y1="28" x2="23" y2="28"/>
-            <line x1="16" y1="24" x2="16" y2="28"/>
-            <rect x="6" y="10" width="20" height="10" rx="0.5"/>
-          </svg>
+    <!-- Tab panels -->
+    <div class="sectors-tab-panels">
+
+      <!-- ── Food & Hospitality ── -->
+      <div class="sectors-tab-panel active" data-panel="food">
+        <div class="sectors-cat-banner">
+          <div class="sectors-cat-banner-text">
+            <div class="sectors-cat-banner-title">Food &amp; Hospitality</div>
+            <p class="sectors-cat-banner-desc">From premium Japanese confectionery to comprehensive food service operations, GOBEL Group brings world-class hospitality experiences and quality food brands to Indonesian consumers across the archipelago.</p>
+            <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
+          </div>
+          <img src="./brand_assets/business_categories/food_hospitality_category.svg" class="sectors-cat-visual" alt="Food & Hospitality" />
         </div>
-        <div class="sector-name">Consumer Electronics</div>
-        <p class="sector-desc">From television sets to home appliances, delivering quality technology to Indonesian households for decades.</p>
-        <div class="sector-tag">National · Panasonic</div>
+        <div class="sectors-co-grid">
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">01</div>
+            <div class="sectors-co-name">Gobel Dharma Sarana Karya</div>
+            <div class="sectors-co-code">PT. GDSK</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">02</div>
+            <div class="sectors-co-name">Chateraise Gobel Indonesia</div>
+            <div class="sectors-co-code">PT. CGI</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Food & Bev -->
-      <div class="sector-card reveal" style="transition-delay:0.1s">
-        <span class="sector-arrow">→</span>
-        <div class="sector-icon-wrap">
-          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
-            <path d="M10 4v8a6 6 0 0 0 12 0V4"/>
-            <line x1="16" y1="18" x2="16" y2="28"/>
-            <line x1="10" y1="28" x2="22" y2="28"/>
-            <line x1="14" y1="4" x2="14" y2="10"/>
-            <line x1="18" y1="4" x2="18" y2="10"/>
-          </svg>
+      <!-- ── Trading & Services ── -->
+      <div class="sectors-tab-panel" data-panel="trading">
+        <div class="sectors-cat-banner">
+          <div class="sectors-cat-banner-text">
+            <div class="sectors-cat-banner-title">Trading &amp; Services</div>
+            <p class="sectors-cat-banner-desc">A comprehensive network of trading companies and service providers connecting manufacturers, distributors, retailers, and consumers across the Indonesian archipelago with efficient, reliable partnerships.</p>
+            <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
+          </div>
+          <img src="./brand_assets/business_categories/trading_service_category.svg" class="sectors-cat-visual" alt="Trading & Services" />
         </div>
-        <div class="sector-name">Food &amp; Beverage</div>
-        <p class="sector-desc">Bringing authentic Indonesian flavors and quality food brands to tables across the archipelago and beyond.</p>
-        <div class="sector-tag">Châteraisé · Food Processing</div>
+        <div class="sectors-co-grid">
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">01</div>
+            <div class="sectors-co-name">Gobel Dharma Nusantara</div>
+            <div class="sectors-co-code">PT. GDN</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">02</div>
+            <div class="sectors-co-name">Panasonic Gobel Indonesia</div>
+            <div class="sectors-co-code">PT. PGI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">03</div>
+            <div class="sectors-co-name">Panasonic Gobel Life Solutions Sales Indonesia</div>
+            <div class="sectors-co-code">PT. PGLSSI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">04</div>
+            <div class="sectors-co-name">GoTrans Logistic International</div>
+            <div class="sectors-co-code">PT. GoTrans</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">05</div>
+            <div class="sectors-co-name">Elmapuri Gopita</div>
+            <div class="sectors-co-code">Go-Ad</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">06</div>
+            <div class="sectors-co-name">Satake Gobel Indonesia</div>
+            <div class="sectors-co-code">PT. SGI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">07</div>
+            <div class="sectors-co-name">Senjaya Gobel Solusindo</div>
+            <div class="sectors-co-code">PT. SGS</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Logistics -->
-      <div class="sector-card reveal" style="transition-delay:0.2s">
-        <span class="sector-arrow">→</span>
-        <div class="sector-icon-wrap">
-          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
-            <rect x="2" y="14" width="20" height="10" rx="1"/>
-            <path d="M22 18h6l2 4v4h-8V18z"/>
-            <circle cx="7" cy="26" r="2"/>
-            <circle cx="25" cy="26" r="2"/>
-            <line x1="2" y1="18" x2="22" y2="18"/>
-          </svg>
+      <!-- ── Manufacturing ── -->
+      <div class="sectors-tab-panel" data-panel="manufacturing">
+        <div class="sectors-cat-banner">
+          <div class="sectors-cat-banner-text">
+            <div class="sectors-cat-banner-title">Manufacturing</div>
+            <p class="sectors-cat-banner-desc">State-of-the-art manufacturing facilities producing consumer electronics, energy solutions, and industrial components — powering Indonesia's domestic market and contributing to global supply chains.</p>
+            <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
+          </div>
+          <img src="./brand_assets/business_categories/manufacturing_category.svg" class="sectors-cat-visual" alt="Manufacturing" />
         </div>
-        <div class="sector-name">Logistics &amp; Distribution</div>
-        <p class="sector-desc">Moving goods and connecting industries across Indonesia with reliable, efficient supply-chain solutions.</p>
-        <div class="sector-tag">GOBEL Logistic · Pan-Indonesia</div>
+        <div class="sectors-co-grid">
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">01</div>
+            <div class="sectors-co-name">Panasonic Manufacturing Indonesia</div>
+            <div class="sectors-co-code">PT. PMI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">02</div>
+            <div class="sectors-co-name">Panasonic Gobel Energy Indonesia</div>
+            <div class="sectors-co-code">PT. PECGI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">03</div>
+            <div class="sectors-co-name">Panasonic Gobel Life Solutions Manufacturing Indonesia</div>
+            <div class="sectors-co-code">PT. PGLSMI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">04</div>
+            <div class="sectors-co-name">Nusantara Parkerizing</div>
+            <div class="sectors-co-code">PT. NP</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Property -->
-      <div class="sector-card reveal" style="transition-delay:0.05s">
-        <span class="sector-arrow">→</span>
-        <div class="sector-icon-wrap">
-          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
-            <path d="M4 28V14L16 4l12 10v14H4z"/>
-            <rect x="12" y="18" width="8" height="10"/>
-            <line x1="4" y1="28" x2="28" y2="28"/>
-          </svg>
+      <!-- ── Property ── -->
+      <div class="sectors-tab-panel" data-panel="property">
+        <div class="sectors-cat-banner">
+          <div class="sectors-cat-banner-text">
+            <div class="sectors-cat-banner-title">Property</div>
+            <p class="sectors-cat-banner-desc">Developing premium residential and commercial properties that shape Indonesia's urban landscape — partnering with world-class developers to deliver modern living and working spaces for the next generation.</p>
+            <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
+          </div>
+          <img src="./brand_assets/business_categories/property_category.svg" class="sectors-cat-visual" alt="Property" />
         </div>
-        <div class="sector-name">Property &amp; Real Estate</div>
-        <p class="sector-desc">Developing modern commercial and residential properties that shape Indonesia's urban landscape.</p>
-        <div class="sector-tag">Commercial · Residential</div>
-      </div>
-
-      <!-- Infrastructure -->
-      <div class="sector-card reveal" style="transition-delay:0.15s">
-        <span class="sector-arrow">→</span>
-        <div class="sector-icon-wrap">
-          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
-            <rect x="8" y="8" width="16" height="20" rx="1"/>
-            <rect x="12" y="12" width="4" height="4"/>
-            <rect x="18" y="12" width="4" height="4"/>
-            <rect x="12" y="20" width="4" height="4"/>
-            <rect x="18" y="20" width="4" height="4"/>
-            <path d="M8 8l8-6 8 6"/>
-          </svg>
+        <div class="sectors-co-grid">
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">01</div>
+            <div class="sectors-co-name">Panasonic Homes Gobel Indonesia</div>
+            <div class="sectors-co-code">PT. PHGI</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">02</div>
+            <div class="sectors-co-name">SMB Gobel Indonesia</div>
+            <div class="sectors-co-code">PT. SMGI</div>
+          </div>
         </div>
-        <div class="sector-name">Infrastructure &amp; Manufacturing</div>
-        <p class="sector-desc">Building the foundational industries and manufacturing capabilities that power Indonesia's economic growth.</p>
-        <div class="sector-tag">Industrial · Manufacturing</div>
-      </div>
-
-      <!-- Telecoms -->
-      <div class="sector-card reveal" style="transition-delay:0.25s">
-        <span class="sector-arrow">→</span>
-        <div class="sector-icon-wrap">
-          <svg viewBox="0 0 32 32" fill="none" stroke="var(--gold-medal)" stroke-width="1.5">
-            <path d="M4 28a20 20 0 0 1 24 0"/>
-            <path d="M8 22a13 13 0 0 1 16 0"/>
-            <path d="M12 16a7 7 0 0 1 8 0"/>
-            <circle cx="16" cy="28" r="1.5" fill="var(--gold-medal)"/>
-          </svg>
-        </div>
-        <div class="sector-name">Telecommunications</div>
-        <p class="sector-desc">Connecting Indonesia through technology and communications infrastructure for a more connected future.</p>
-        <div class="sector-tag">Connectivity · Technology</div>
       </div>
 
     </div>
@@ -2105,6 +2323,19 @@
     }
     window.addEventListener('scroll', checkScroll, { passive: true });
     setTimeout(checkScroll, 200);
+  })();
+
+  // ─── Business Sectors tab switching ───
+  (function() {
+    const btns   = document.querySelectorAll('.sectors-tab-btn');
+    const panels = document.querySelectorAll('.sectors-tab-panel');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        btns.forEach(b   => b.classList.toggle('active', b === btn));
+        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === cat));
+      });
+    });
   })();
 
   // ─── Animated bars on CSR view ───
