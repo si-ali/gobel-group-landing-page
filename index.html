@@ -448,11 +448,53 @@
     }
 
     /* ─── Business Sectors ─── */
-    .sectors {
-      background: var(--dark-900);
-      padding: 120px 48px;
+    .sectors-outer {
+      position: relative;
+      height: 400vh; /* 4 tabs × viewport height */
     }
-    .sectors-inner { max-width: 1440px; margin: 0 auto; }
+    .sectors {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: var(--dark-900);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .sectors-inner {
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 52px 48px 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    /* compact section header inside sticky sectors */
+    .sectors .section-header { margin-bottom: 28px; }
+    /* panel area fills remaining height and scrolls internally */
+    .sectors .sectors-tab-panels {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-bottom: 40px;
+      scrollbar-width: none;
+    }
+    .sectors .sectors-tab-panels::-webkit-scrollbar { display: none; }
+    /* scroll progress bar */
+    .sectors-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--gold-medal);
+      width: 25%;
+      transition: width 0.45s cubic-bezier(0.22,1,0.36,1);
+      z-index: 2;
+    }
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -1458,7 +1500,11 @@
       .hero-inner { padding: 0 24px; }
       .sectors-grid, .news-grid,
       .csr-pillars, .footer-top { grid-template-columns: 1fr; }
-      .about, .sectors, .anniversary, .csr, .news, .footer { padding: 80px 24px; }
+      .sectors-outer { height: auto; }
+      .sectors { position: relative; height: auto; overflow: visible; }
+      .sectors-inner { padding: 48px 24px 0; overflow: visible; }
+      .sectors .sectors-tab-panels { overflow: visible; padding-bottom: 48px; }
+      .about, .anniversary, .csr, .news, .footer { padding: 80px 24px; }
       .anniversary-left, .anniversary-right { padding: 64px 24px; }
       .promo-card { flex: 0 0 calc((100% - 16px) / 2) !important; } /* 2 on tablet */
       .promo-inner { padding: 0 16px; }
@@ -1769,7 +1815,9 @@
 </section>
 
 <!-- ═══════════════════════════ BUSINESS SECTORS ═══════════════════════════ -->
-<section class="sectors" id="sectors">
+<div class="sectors-outer" id="sectors">
+<section class="sectors">
+  <div class="sectors-progress-bar" id="sectors-progress-bar"></div>
   <div class="sectors-inner">
     <div class="section-header reveal">
       <div>
@@ -1927,6 +1975,7 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- ═══════════════════════════ BUSINESS FIELDS ═══════════════════════════ -->
 <section class="partners">
@@ -2325,17 +2374,65 @@
     setTimeout(checkScroll, 200);
   })();
 
-  // ─── Business Sectors tab switching ───
+  // ─── Business Sectors scroll-driven tabs ───
   (function() {
-    const btns   = document.querySelectorAll('.sectors-tab-btn');
-    const panels = document.querySelectorAll('.sectors-tab-panel');
-    btns.forEach(btn => {
+    const outer    = document.querySelector('.sectors-outer');
+    const btns     = document.querySelectorAll('.sectors-tab-btn');
+    const panels   = document.querySelectorAll('.sectors-tab-panel');
+    const progBar  = document.getElementById('sectors-progress-bar');
+    if (!outer || !btns.length) return;
+
+    const TOTAL    = btns.length; // 4
+    const catOrder = ['food', 'trading', 'manufacturing', 'property'];
+    let current    = 0;
+
+    function activate(idx) {
+      idx = Math.max(0, Math.min(TOTAL - 1, idx));
+      if (idx === current) return;
+      current = idx;
+      btns.forEach((b, i)   => b.classList.toggle('active', i === idx));
+      panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+      // scroll panel area back to top on tab change
+      const panelsEl = document.querySelector('.sectors-tab-panels');
+      if (panelsEl) panelsEl.scrollTop = 0;
+      // update gold progress bar width
+      if (progBar) progBar.style.width = ((idx + 1) / TOTAL * 100) + '%';
+    }
+
+    // Manual tab click — jump scroll position to matching zone
+    btns.forEach((btn, i) => {
       btn.addEventListener('click', () => {
-        const cat = btn.dataset.cat;
-        btns.forEach(b   => b.classList.toggle('active', b === btn));
-        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === cat));
+        const rect    = outer.getBoundingClientRect();
+        const outerH  = outer.offsetHeight;
+        const viewH   = window.innerHeight;
+        const total   = outerH - viewH;
+        const target  = (i / TOTAL) * total + (-rect.top + window.scrollY);
+        // calculate absolute scroll position for this tab's zone
+        const outerTop  = outer.getBoundingClientRect().top + window.scrollY;
+        const scrollTo  = outerTop + (i / TOTAL) * total;
+        window.scrollTo({ top: scrollTo, behavior: 'smooth' });
       });
     });
+
+    // Scroll-driven switching
+    function onScroll() {
+      const rect    = outer.getBoundingClientRect();
+      const outerH  = outer.offsetHeight;
+      const viewH   = window.innerHeight;
+      const scrolled = -rect.top;
+      const total    = outerH - viewH;
+
+      if (scrolled <= 0)     { activate(0); return; }
+      if (scrolled >= total) { activate(TOTAL - 1); return; }
+
+      const progress = scrolled / total;  // 0 → 1
+      // Each tab occupies 1/TOTAL of the scroll range
+      const idx = Math.min(TOTAL - 1, Math.floor(progress * TOTAL));
+      activate(idx);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // init on load
   })();
 
   // ─── Animated bars on CSR view ───
