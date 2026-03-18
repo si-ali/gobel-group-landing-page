@@ -6,59 +6,24 @@
   <title>GOBEL Group</title>
   <link rel="icon" type="image/png" sizes="64x64" href="./brand_assets/gobel_group/Gobel_Group_HI.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./brand_assets/gobel_group/Gobel_Group_HI.png" />
+  <!-- Preconnect to external origins to cut DNS+TCP+TLS handshake time -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <link rel="preconnect" href="https://esm.sh" crossorigin />
+  <link rel="dns-prefetch" href="https://i.gojekapi.com" />
+  <link rel="dns-prefetch" href="https://cdn.antaranews.com" />
+  <!-- Preload above-the-fold logo (LCP candidate) -->
+  <link rel="preload" href="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" as="image" fetchpriority="high" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* ─── Neue Haas Grotesk Display — full weight stack ─── */
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-15xxthin-trial.otf') format('opentype'); font-weight:100; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-16xxthinitalic-trial.otf') format('opentype'); font-weight:100; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-25xthin-trial.otf') format('opentype'); font-weight:200; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-26xthinitalic-trial.otf') format('opentype'); font-weight:200; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-35thin-trial.otf') format('opentype'); font-weight:300; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-36thinitalic-trial.otf') format('opentype'); font-weight:300; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-45light-trial.otf') format('opentype'); font-weight:350; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-46lightitalic-trial.otf') format('opentype'); font-weight:350; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+    /* ─── Neue Haas Grotesk Display — weights actually used (500 / 700 / 900) ─── */
     @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
     @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
     @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-95black-trial.otf') format('opentype'); font-weight:900; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHG'; src:url('./brand_assets/typography/neuehaasgrotdisp-96blackitalic-trial.otf') format('opentype'); font-weight:900; font-style:italic; font-display:swap; }
 
-    /* ─── Neue Haas Grotesk Text — full weight stack ─── */
+    /* ─── Neue Haas Grotesk Text — weights actually used (400 / 500 / 700) ─── */
     @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
     @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
     @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGText'; src:url('./brand_assets/typography/neuehaasgrottext-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
-
-    /* ─── Neue Haas Grotesk Display Round — full weight stack ─── */
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-15xxthin-trial.otf') format('opentype'); font-weight:100; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-16xxthinitalic-trial.otf') format('opentype'); font-weight:100; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-25xthin-trial.otf') format('opentype'); font-weight:200; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-26xthinitalic-trial.otf') format('opentype'); font-weight:200; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-35thin-trial.otf') format('opentype'); font-weight:300; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-36thinitalic-trial.otf') format('opentype'); font-weight:300; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-45light-trial.otf') format('opentype'); font-weight:350; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-46lightitalic-trial.otf') format('opentype'); font-weight:350; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-95black-trial.otf') format('opentype'); font-weight:900; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGRound'; src:url('./brand_assets/typography/neuehaasgrotdispround-96blackitalic-trial.otf') format('opentype'); font-weight:900; font-style:italic; font-display:swap; }
-
-    /* ─── Neue Haas Grotesk Text Round — full weight stack ─── */
-    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-55roman-trial.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-56italic-trial.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-65medium-trial.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-66mediumitalic-trial.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
-    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-75bold-trial.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
-    @font-face { font-family:'NHGTextRound'; src:url('./brand_assets/typography/neuehaasgrottextround-76bolditalic-trial.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
 
     /* ─── Brand CSS Variables ─── */
     :root {
@@ -448,52 +413,16 @@
     }
 
     /* ─── Business Sectors ─── */
-    .sectors-outer {
-      position: relative;
-      height: 400vh; /* 4 tabs × viewport height */
-    }
     .sectors {
-      position: sticky;
-      top: 0;
-      height: 100vh;
       background: var(--dark-900);
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      padding: 120px 0;
     }
     .sectors-inner {
       max-width: 1440px;
       width: 100%;
       margin: 0 auto;
-      padding: 52px 48px 0;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      overflow: hidden;
+      padding: 0 48px;
       box-sizing: border-box;
-    }
-    /* compact section header inside sticky sectors */
-    .sectors .section-header { margin-bottom: 28px; }
-    /* panel area fills remaining height and scrolls internally */
-    .sectors .sectors-tab-panels {
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-bottom: 40px;
-      scrollbar-width: none;
-    }
-    .sectors .sectors-tab-panels::-webkit-scrollbar { display: none; }
-    /* scroll progress bar */
-    .sectors-progress-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      background: var(--gold-medal);
-      width: 25%;
-      transition: width 0.45s cubic-bezier(0.22,1,0.36,1);
-      z-index: 2;
     }
     .section-header {
       display: flex;
@@ -695,9 +624,7 @@
       gap: 2px;
     }
     .sectors-co-card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.09);
       padding: 36px 32px;
       display: flex;
@@ -1195,10 +1122,8 @@
       gap: 2px;
     }
     .csr-pillar-card {
-      background: rgba(86,164,67,0.13);
+      background: rgba(86,164,67,0.16);
       border: 1px solid rgba(86,164,67,0.30);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       padding: 28px 24px;
       display: flex;
       flex-direction: column;
@@ -1465,7 +1390,6 @@
       inset: 0;
       pointer-events: none;
       z-index: 9998;
-      will-change: background;
     }
 
     /* ─── Scroll reveal ─── */
@@ -1482,6 +1406,15 @@
       opacity: 1;
       transform: translateY(0);
       transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    /* Respect user's OS motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .js-loaded .reveal { opacity: 1; transform: none; }
     }
 
     /* ─── Responsive ─── */
@@ -1500,10 +1433,8 @@
       .hero-inner { padding: 0 24px; }
       .sectors-grid, .news-grid,
       .csr-pillars, .footer-top { grid-template-columns: 1fr; }
-      .sectors-outer { height: auto; }
-      .sectors { position: relative; height: auto; overflow: visible; }
-      .sectors-inner { padding: 48px 24px 0; overflow: visible; }
-      .sectors .sectors-tab-panels { overflow: visible; padding-bottom: 48px; }
+      .sectors { padding: 80px 0; }
+      .sectors-inner { padding: 0 24px; }
       .about, .anniversary, .csr, .news, .footer { padding: 80px 24px; }
       .anniversary-left, .anniversary-right { padding: 64px 24px; }
       .promo-card { flex: 0 0 calc((100% - 16px) / 2) !important; } /* 2 on tablet */
@@ -1567,7 +1498,6 @@
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-      backdrop-filter: blur(4px);
       box-shadow: 0 2px 12px rgba(0,0,0,0.10);
     }
     .promo-nav--prev { left: -22px; }
@@ -1815,9 +1745,7 @@
 </section>
 
 <!-- ═══════════════════════════ BUSINESS SECTORS ═══════════════════════════ -->
-<div class="sectors-outer" id="sectors">
-<section class="sectors">
-  <div class="sectors-progress-bar" id="sectors-progress-bar"></div>
+<section class="sectors" id="sectors">
   <div class="sectors-inner">
     <div class="section-header reveal">
       <div>
@@ -1836,6 +1764,7 @@
       <button class="sectors-tab-btn" data-cat="trading">Trading &amp; Services</button>
       <button class="sectors-tab-btn" data-cat="manufacturing">Manufacturing</button>
       <button class="sectors-tab-btn" data-cat="property">Property</button>
+      <button class="sectors-tab-btn" data-cat="healthcare">Health Care</button>
     </div>
 
     <!-- Tab panels -->
@@ -1849,7 +1778,7 @@
             <p class="sectors-cat-banner-desc">From premium Japanese confectionery to comprehensive food service operations, GOBEL Group brings world-class hospitality experiences and quality food brands to Indonesian consumers across the archipelago.</p>
             <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
           </div>
-          <img src="./brand_assets/business_categories/food_hospitality_category.svg" class="sectors-cat-visual" alt="Food & Hospitality" />
+          <img src="./brand_assets/business_categories/food_hospitality_category.svg" class="sectors-cat-visual" loading="lazy" alt="Food & Hospitality" />
         </div>
         <div class="sectors-co-grid">
           <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
@@ -1862,11 +1791,6 @@
             <div class="sectors-co-name">Chateraise Gobel Indonesia</div>
             <div class="sectors-co-code">PT. CGI</div>
           </div>
-          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
-            <div class="sectors-co-index">03</div>
-            <div class="sectors-co-name">Kaikoukai Indonesia</div>
-            <div class="sectors-co-code">PT. KKI</div>
-          </div>
         </div>
       </div>
 
@@ -1878,7 +1802,7 @@
             <p class="sectors-cat-banner-desc">A comprehensive network of trading companies and service providers connecting manufacturers, distributors, retailers, and consumers across the Indonesian archipelago with efficient, reliable partnerships.</p>
             <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
           </div>
-          <img src="./brand_assets/business_categories/trading_service_category.svg" class="sectors-cat-visual" alt="Trading & Services" />
+          <img src="./brand_assets/business_categories/trading_service_category.svg" class="sectors-cat-visual" loading="lazy" alt="Trading & Services" />
         </div>
         <div class="sectors-co-grid">
           <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
@@ -1927,7 +1851,7 @@
             <p class="sectors-cat-banner-desc">State-of-the-art manufacturing facilities producing consumer electronics, energy solutions, and industrial components — powering Indonesia's domestic market and contributing to global supply chains.</p>
             <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
           </div>
-          <img src="./brand_assets/business_categories/manufacturing_category.svg" class="sectors-cat-visual" alt="Manufacturing" />
+          <img src="./brand_assets/business_categories/manufacturing_category.svg" class="sectors-cat-visual" loading="lazy" alt="Manufacturing" />
         </div>
         <div class="sectors-co-grid">
           <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
@@ -1950,11 +1874,6 @@
             <div class="sectors-co-name">Nusantara Parkerizing</div>
             <div class="sectors-co-code">PT. NP</div>
           </div>
-          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
-            <div class="sectors-co-index">05</div>
-            <div class="sectors-co-name">PHC Indonesia</div>
-            <div class="sectors-co-code">PT. PHCI</div>
-          </div>
         </div>
       </div>
 
@@ -1966,7 +1885,7 @@
             <p class="sectors-cat-banner-desc">Developing premium residential and commercial properties that shape Indonesia's urban landscape — partnering with world-class developers to deliver modern living and working spaces for the next generation.</p>
             <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
           </div>
-          <img src="./brand_assets/business_categories/property_category.svg" class="sectors-cat-visual" alt="Property" />
+          <img src="./brand_assets/business_categories/property_category.svg" class="sectors-cat-visual" loading="lazy" alt="Property" />
         </div>
         <div class="sectors-co-grid">
           <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
@@ -1982,10 +1901,33 @@
         </div>
       </div>
 
+      <!-- ── Health Care ── -->
+      <div class="sectors-tab-panel" data-panel="healthcare">
+        <div class="sectors-cat-banner">
+          <div class="sectors-cat-banner-text">
+            <div class="sectors-cat-banner-title">Health Care</div>
+            <p class="sectors-cat-banner-desc">Advancing Indonesia's healthcare ecosystem through world-class medical equipment, clinical solutions, and healthcare services — bringing Japanese precision and innovation to support better health outcomes across the nation.</p>
+            <span class="sectors-cat-cta">View category detail <span class="sectors-cat-cta-arrow">→</span></span>
+          </div>
+          <img src="./brand_assets/business_categories/health_care_category.svg" class="sectors-cat-visual" loading="lazy" alt="Health Care" />
+        </div>
+        <div class="sectors-co-grid">
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">01</div>
+            <div class="sectors-co-name">Kaikoukai Indonesia</div>
+            <div class="sectors-co-code">PT. Kaikoukai Indonesia</div>
+          </div>
+          <div class="sectors-co-card"><span class="sectors-co-arrow">→</span>
+            <div class="sectors-co-index">02</div>
+            <div class="sectors-co-name">PHC Indonesia</div>
+            <div class="sectors-co-code">PT. PHC Indonesia (PHCI)</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
-</div>
 
 <!-- ═══════════════════════════ BUSINESS FIELDS ═══════════════════════════ -->
 <section class="partners">
@@ -1995,39 +1937,39 @@
   <div class="marquee-wrapper">
     <div class="marquee-track">
       <!-- Set A -->
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.png" alt="Panasonic" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.png" alt="AGIT" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.png" alt="DKM" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.png" alt="GDSK" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.png" alt="GoAd" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.png" alt="IIAPG" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.png" alt="Panasonic Home" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.png" alt="PHC" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.png" alt="SGS" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.png" alt="Châteraisé" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.png" alt="GoTrans" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.png" alt="Nuspar" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.png" alt="Opus Park" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.png" alt="Panasonic Energy" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.png" alt="Sunstar" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.png" alt="Gobel Foundation" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.png" alt="Panasonic" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.png" alt="AGIT" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.png" alt="DKM" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.png" alt="GDSK" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.png" alt="GoAd" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.png" alt="IIAPG" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.png" alt="Panasonic Home" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.png" alt="PHC" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.png" alt="SGS" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.png" alt="Châteraisé" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.png" alt="GoTrans" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.png" alt="Nuspar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.png" alt="Opus Park" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.png" alt="Panasonic Energy" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.png" alt="Sunstar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.png" alt="Gobel Foundation" class="marquee-logo" loading="lazy" decoding="async" /></div>
       <!-- Set B — duplicate for seamless loop -->
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.png" alt="Panasonic" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.png" alt="AGIT" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.png" alt="DKM" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.png" alt="GDSK" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.png" alt="GoAd" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.png" alt="IIAPG" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.png" alt="Panasonic Home" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.png" alt="PHC" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.png" alt="SGS" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.png" alt="Châteraisé" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.png" alt="GoTrans" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.png" alt="Nuspar" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.png" alt="Opus Park" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.png" alt="Panasonic Energy" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.png" alt="Sunstar" class="marquee-logo" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.png" alt="Gobel Foundation" class="marquee-logo" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.png" alt="Panasonic" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.png" alt="AGIT" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.png" alt="DKM" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.png" alt="GDSK" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.png" alt="GoAd" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.png" alt="IIAPG" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.png" alt="Panasonic Home" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.png" alt="PHC" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.png" alt="SGS" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.png" alt="Châteraisé" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.png" alt="GoTrans" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.png" alt="Nuspar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.png" alt="Opus Park" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.png" alt="Panasonic Energy" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.png" alt="Sunstar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.png" alt="Gobel Foundation" class="marquee-logo" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 </section>
@@ -2059,7 +2001,7 @@
       <!-- Featured — large left card spanning 2 rows -->
       <div class="news-card news-card--featured reveal">
         <div class="news-img-wrap">
-          <img src="./brand_assets/70th_logo/70thGobel_Logo_70thSecondary.png" alt="GOBEL 70th Anniversary" class="news-img" />
+          <img src="./brand_assets/70th_logo/70thGobel_Logo_70thSecondary.png" alt="GOBEL 70th Anniversary" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Company News</div>
@@ -2073,7 +2015,7 @@
       <!-- Card 2 — top right -->
       <div class="news-card reveal">
         <div class="news-img-wrap">
-          <img src="./brand_assets/photos/GLI_photo.jpg" alt="GoTrans Logistics" class="news-img" />
+          <img src="./brand_assets/photos/GLI_photo.jpg" alt="GoTrans Logistics" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Business</div>
@@ -2086,7 +2028,7 @@
       <!-- Card 3 — top far right -->
       <div class="news-card reveal">
         <div class="news-img-wrap">
-          <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/0b23fb80-91ff-4f08-a86c-bd9f94a730b7_gobiz-dashboard-image_1761108166044.jpg" alt="Châteraisé Partnership" class="news-img" />
+          <img src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/0b23fb80-91ff-4f08-a86c-bd9f94a730b7_gobiz-dashboard-image_1761108166044.jpg" alt="Châteraisé Partnership" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Partnership</div>
@@ -2099,7 +2041,7 @@
       <!-- Card 4 — bottom right -->
       <div class="news-card reveal">
         <div class="news-img-wrap">
-          <img src="./brand_assets/backgrounds/GOBEL_Digital Background_70yhWhite 1920x1080.jpg" alt="GOBEL Foundation" class="news-img" />
+          <img src="./brand_assets/backgrounds/GOBEL_Digital Background_70yhWhite 1920x1080.jpg" alt="GOBEL Foundation" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Sustainability</div>
@@ -2112,7 +2054,7 @@
       <!-- Card 5 — bottom far right -->
       <div class="news-card reveal">
         <div class="news-img-wrap">
-          <img src="https://cdn.antaranews.com/cache/1200x800/2023/03/04/IMG-20230304-WA0002_1.jpg" alt="Panasonic Innovation" class="news-img" />
+          <img src="https://cdn.antaranews.com/cache/1200x800/2023/03/04/IMG-20230304-WA0002_1.jpg" alt="Panasonic Innovation" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Innovation</div>
@@ -2154,7 +2096,7 @@
 
       <div class="csr-top-right">
         <div class="csr-image-wrapper">
-          <img src="./brand_assets/photos/Food-Hospitality-Image.jpg" alt="GOBEL CSR — Community Empowerment" />
+          <img src="./brand_assets/photos/Food-Hospitality-Image.jpg" alt="GOBEL CSR — Community Empowerment" loading="lazy" decoding="async" />
         </div>
         <div class="csr-stats">
           <div class="csr-stat-item">
@@ -2229,7 +2171,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" alt="GOBEL Group" class="footer-logo" />
+        <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" alt="GOBEL Group" class="footer-logo" loading="lazy" decoding="async" />
         <p class="footer-tagline">
           <strong>GOBEL Group</strong><br />
           Seven decades of building Indonesia's industries, empowering communities, and shaping the nation's future.
@@ -2384,65 +2326,17 @@
     setTimeout(checkScroll, 200);
   })();
 
-  // ─── Business Sectors scroll-driven tabs ───
+  // ─── Business Sectors tabs (click to switch) ───
   (function() {
-    const outer    = document.querySelector('.sectors-outer');
-    const btns     = document.querySelectorAll('.sectors-tab-btn');
-    const panels   = document.querySelectorAll('.sectors-tab-panel');
-    const progBar  = document.getElementById('sectors-progress-bar');
-    if (!outer || !btns.length) return;
-
-    const TOTAL    = btns.length; // 4
-    const catOrder = ['food', 'trading', 'manufacturing', 'property'];
-    let current    = 0;
-
-    function activate(idx) {
-      idx = Math.max(0, Math.min(TOTAL - 1, idx));
-      if (idx === current) return;
-      current = idx;
-      btns.forEach((b, i)   => b.classList.toggle('active', i === idx));
-      panels.forEach((p, i) => p.classList.toggle('active', i === idx));
-      // scroll panel area back to top on tab change
-      const panelsEl = document.querySelector('.sectors-tab-panels');
-      if (panelsEl) panelsEl.scrollTop = 0;
-      // update gold progress bar width
-      if (progBar) progBar.style.width = ((idx + 1) / TOTAL * 100) + '%';
-    }
-
-    // Manual tab click — jump scroll position to matching zone
+    const btns   = document.querySelectorAll('.sectors-tab-btn');
+    const panels = document.querySelectorAll('.sectors-tab-panel');
+    if (!btns.length) return;
     btns.forEach((btn, i) => {
       btn.addEventListener('click', () => {
-        const rect    = outer.getBoundingClientRect();
-        const outerH  = outer.offsetHeight;
-        const viewH   = window.innerHeight;
-        const total   = outerH - viewH;
-        const target  = (i / TOTAL) * total + (-rect.top + window.scrollY);
-        // calculate absolute scroll position for this tab's zone
-        const outerTop  = outer.getBoundingClientRect().top + window.scrollY;
-        const scrollTo  = outerTop + (i / TOTAL) * total;
-        window.scrollTo({ top: scrollTo, behavior: 'smooth' });
+        btns.forEach((b, j)   => b.classList.toggle('active', j === i));
+        panels.forEach((p, j) => p.classList.toggle('active', j === i));
       });
     });
-
-    // Scroll-driven switching
-    function onScroll() {
-      const rect    = outer.getBoundingClientRect();
-      const outerH  = outer.offsetHeight;
-      const viewH   = window.innerHeight;
-      const scrolled = -rect.top;
-      const total    = outerH - viewH;
-
-      if (scrolled <= 0)     { activate(0); return; }
-      if (scrolled >= total) { activate(TOTAL - 1); return; }
-
-      const progress = scrolled / total;  // 0 → 1
-      // Each tab occupies 1/TOTAL of the scroll range
-      const idx = Math.min(TOTAL - 1, Math.floor(progress * TOTAL));
-      activate(idx);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // init on load
   })();
 
   // ─── Animated bars on CSR view ───
@@ -2518,7 +2412,11 @@
       ctx.fill();
     }
 
+    let particlesVisible = true;
+    let particlesRaf = null;
+
     function animate() {
+      if (!particlesVisible) { particlesRaf = null; return; }
       const w = canvas.width  / dpr;
       const h = canvas.height / dpr;
       const edge = 20;
@@ -2546,7 +2444,15 @@
         }
       });
 
-      requestAnimationFrame(animate);
+      particlesRaf = requestAnimationFrame(animate);
+    }
+
+    // Pause particles when hero is off-screen
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        particlesVisible = entries[0].isIntersecting;
+        if (particlesVisible && !particlesRaf) particlesRaf = requestAnimationFrame(animate);
+      }, { threshold: 0 }).observe(canvas);
     }
 
     window.addEventListener('resize', () => { resize(); initCircles(); });
@@ -2561,7 +2467,7 @@
 
     resize();
     initCircles();
-    animate();
+    particlesRaf = requestAnimationFrame(animate);
   })();
 
 </script>
@@ -2879,7 +2785,11 @@
       ctx.restore();
     }
 
+    let beamsVisible = false;
+    let beamsRaf = null;
+
     function tick() {
+      if (!beamsVisible) { beamsRaf = null; return; }
       ctx.clearRect(0, 0, w, h);
       beams.forEach(b => {
         b.y      -= b.speed;
@@ -2891,7 +2801,15 @@
         }
         drawBeam(b);
       });
-      requestAnimationFrame(tick);
+      beamsRaf = requestAnimationFrame(tick);
+    }
+
+    // Only animate when CSR section is visible
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        beamsVisible = entries[0].isIntersecting;
+        if (beamsVisible && !beamsRaf) beamsRaf = requestAnimationFrame(tick);
+      }, { threshold: 0 }).observe(canvas.parentElement);
     }
 
     resize();
@@ -2902,7 +2820,6 @@
       beams.push(b);
     }
     new ResizeObserver(resize).observe(canvas.parentElement);
-    tick();
   })();
 
 </script>
@@ -2920,10 +2837,13 @@
     let cy = my;
     let active = false;
 
+    let spotlightRaf = null;
+
     document.addEventListener('mousemove', e => {
       mx = e.clientX;
       my = e.clientY;
       active = true;
+      if (!spotlightRaf) spotlightRaf = requestAnimationFrame(tick);
     });
     document.addEventListener('mouseleave', () => { active = false; });
     document.addEventListener('mouseenter', () => { active = true; });
@@ -2931,19 +2851,15 @@
     function lerp(a, b, t) { return a + (b - a) * t; }
 
     function tick() {
+      spotlightRaf = null;
       if (active) {
         cx = lerp(cx, mx, 0.06);
         cy = lerp(cy, my, 0.06);
         el.style.background =
           `radial-gradient(circle 700px at ${cx}px ${cy}px, rgba(255,213,128,0.07) 0%, rgba(255,213,128,0.025) 40%, transparent 70%)`;
-      } else {
-        // Fade out gradually when cursor leaves
-        cx = lerp(cx, mx, 0.04);
-        cy = lerp(cy, my, 0.04);
+        spotlightRaf = requestAnimationFrame(tick);
       }
-      requestAnimationFrame(tick);
     }
-    tick();
   })();
 </script>
 
