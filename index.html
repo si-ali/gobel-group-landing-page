@@ -12,7 +12,10 @@
   <link rel="dns-prefetch" href="https://i.gojekapi.com" />
   <link rel="dns-prefetch" href="https://cdn.antaranews.com" />
   <!-- Preload above-the-fold logo (LCP candidate) -->
-  <link rel="preload" href="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.webp" as="image" type="image/webp" fetchpriority="high" />
+  <!-- Preload critical fonts to avoid FOUT on hero heading and body text -->
+  <link rel="preload" href="./brand_assets/typography/neuehaasgrotdisp-95black-trial.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="./brand_assets/typography/neuehaasgrottext-55roman-trial.otf" as="font" type="font/otf" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* ─── Neue Haas Grotesk Display — weights actually used (500 / 700 / 900) ─── */
@@ -690,7 +693,7 @@
       position: absolute;
       right: 0; top: 0; bottom: 0;
       width: 62%;
-      background-image: url('./brand_assets/photos/gobel_70years_innovation.png');
+      background-image: url('./brand_assets/photos/gobel_70years_innovation.webp');
       background-size: cover;
       background-position: center center;
       opacity: 0;
@@ -830,7 +833,7 @@
     /* ─── News ─── */
     .news {
       background-color: #0e0c09;
-      background-image: url('./brand_assets/backgrounds/GOBEL_Virtual Background_70thBlack.jpg');
+      background-image: url('./brand_assets/backgrounds/GOBEL_Virtual_Background_70thBlack.webp');
       background-size: contain;
       background-position: center;
       background-repeat: repeat;
@@ -1170,7 +1173,7 @@
     .careers-bg {
       position: absolute;
       inset: 0;
-      background-image: url('./brand_assets/guidelines/Gobel Group_Corporate Identity Manual_Eng_v2-page-00045.jpg');
+      background-image: url('./brand_assets/guidelines/careers_bg.webp');
       background-size: cover;
       background-position: center 30%;
       transform: scale(1.04);
@@ -1535,7 +1538,7 @@
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
     <div class="nav-logo">
-      <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" alt="GOBEL Group" />
+      <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.webp" alt="GOBEL Group" />
     </div>
     <div class="nav-links">
       <a href="#anniversary">About Us</a>
@@ -1582,7 +1585,7 @@
         </div>
         <div class="hero-visual">
           <img
-            src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png"
+            src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.webp"
             alt="GOBEL 70th Anniversary"
             class="hero-lockup-img"
           />
@@ -1621,19 +1624,19 @@
       <div class="promo-viewport" id="promoViewport">
         <div class="promo-track" id="promoTrack">
           <div class="promo-card">
-            <img src="./brand_assets/exlusive_promotions/landscape_panasonic_ramadan_promo_banner.png" alt="Panasonic Ramadan Promo" loading="lazy">
+            <img src="./brand_assets/exlusive_promotions/landscape_panasonic_ramadan_promo_banner.webp" alt="Panasonic Ramadan Promo" loading="lazy">
           </div>
           <div class="promo-card">
-            <img src="./brand_assets/exlusive_promotions/opus_park_luxury_real_estate_banner.png" alt="Opus Park — The Quiet Side of City Living" loading="lazy">
+            <img src="./brand_assets/exlusive_promotions/opus_park_luxury_real_estate_banner.webp" alt="Opus Park — The Quiet Side of City Living" loading="lazy">
           </div>
           <div class="promo-card">
-            <img src="./brand_assets/exlusive_promotions/gobel_70_years_ramadan_giveaway_banner.png" alt="Gobel 70 Tahun Giveaway Ramadan" loading="lazy">
+            <img src="./brand_assets/exlusive_promotions/gobel_70_years_ramadan_giveaway_banner.webp" alt="Gobel 70 Tahun Giveaway Ramadan" loading="lazy">
           </div>
           <div class="promo-card">
-            <img src="./brand_assets/exlusive_promotions/chaterais_iftar_promo_banner.png" alt="Châteraisé Iftar Promo 15% Off" loading="lazy">
+            <img src="./brand_assets/exlusive_promotions/chaterais_iftar_promo_banner.webp" alt="Châteraisé Iftar Promo 15% Off" loading="lazy">
           </div>
           <div class="promo-card">
-            <img src="./brand_assets/exlusive_promotions/chaterais_gift_box_promotion_banner.png" alt="Châteraisé Sincerity in Every Gift" loading="lazy">
+            <img src="./brand_assets/exlusive_promotions/chaterais_gift_box_promotion_banner.webp" alt="Châteraisé Sincerity in Every Gift" loading="lazy">
           </div>
         </div>
       </div>
@@ -1688,7 +1691,7 @@
     <!-- GOBEL 70th logo — bottom -->
     <div class="anniv-crest-wrap" id="annivCrest">
       <img
-        src="./brand_assets/70th_logo/70thGobel_Logo_70thTertiary.png"
+        src="./brand_assets/70th_logo/70thGobel_Logo_70thTertiary.webp"
         alt="GOBEL Group 70th Anniversary"
         class="anniv-crest"
       />
@@ -1937,39 +1940,39 @@
   <div class="marquee-wrapper">
     <div class="marquee-track">
       <!-- Set A -->
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.png" alt="Panasonic" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.png" alt="AGIT" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.png" alt="DKM" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.png" alt="GDSK" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.png" alt="GoAd" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.png" alt="IIAPG" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.png" alt="Panasonic Home" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.png" alt="PHC" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.png" alt="SGS" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.png" alt="Châteraisé" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.png" alt="GoTrans" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.png" alt="Nuspar" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.png" alt="Opus Park" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.png" alt="Panasonic Energy" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.png" alt="Sunstar" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.png" alt="Gobel Foundation" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.webp" alt="Panasonic" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.webp" alt="AGIT" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.webp" alt="DKM" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.webp" alt="GDSK" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.webp" alt="GoAd" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.webp" alt="IIAPG" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.webp" alt="Panasonic Home" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.webp" alt="PHC" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.webp" alt="SGS" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.webp" alt="Châteraisé" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.webp" alt="GoTrans" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.webp" alt="Nuspar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.webp" alt="Opus Park" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.webp" alt="Panasonic Energy" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.webp" alt="Sunstar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.webp" alt="Gobel Foundation" class="marquee-logo" loading="lazy" decoding="async" /></div>
       <!-- Set B — duplicate for seamless loop -->
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.png" alt="Panasonic" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.png" alt="AGIT" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.png" alt="DKM" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.png" alt="GDSK" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.png" alt="GoAd" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.png" alt="IIAPG" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.png" alt="Panasonic Home" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.png" alt="PHC" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.png" alt="SGS" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.png" alt="Châteraisé" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.png" alt="GoTrans" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.png" alt="Nuspar" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.png" alt="Opus Park" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.png" alt="Panasonic Energy" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.png" alt="Sunstar" class="marquee-logo" loading="lazy" decoding="async" /></div>
-      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.png" alt="Gobel Foundation" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic.webp" alt="Panasonic" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/agit.webp" alt="AGIT" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/dkm.webp" alt="DKM" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gdsk.webp" alt="GDSK" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/goad.webp" alt="GoAd" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/iiapg.webp" alt="IIAPG" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_home.webp" alt="Panasonic Home" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/phc.webp" alt="PHC" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sgs.webp" alt="SGS" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/chateraise.webp" alt="Châteraisé" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gotrans.webp" alt="GoTrans" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/nuspar.webp" alt="Nuspar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/opus.webp" alt="Opus Park" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/panasonic_energy.webp" alt="Panasonic Energy" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/sunstar.webp" alt="Sunstar" class="marquee-logo" loading="lazy" decoding="async" /></div>
+      <div class="marquee-item"><img src="./brand_assets/part_of_gobel_ecosystem/gobel_foundation.webp" alt="Gobel Foundation" class="marquee-logo" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 </section>
@@ -2001,7 +2004,7 @@
       <!-- Featured — large left card spanning 2 rows -->
       <div class="news-card news-card--featured reveal">
         <div class="news-img-wrap">
-          <img src="./brand_assets/70th_logo/70thGobel_Logo_70thSecondary.png" alt="GOBEL 70th Anniversary" class="news-img" loading="lazy" decoding="async" />
+          <img src="./brand_assets/70th_logo/70thGobel_Logo_70thSecondary.webp" alt="GOBEL 70th Anniversary" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Company News</div>
@@ -2015,7 +2018,7 @@
       <!-- Card 2 — top right -->
       <div class="news-card reveal">
         <div class="news-img-wrap">
-          <img src="./brand_assets/photos/GLI_photo.jpg" alt="GoTrans Logistics" class="news-img" loading="lazy" decoding="async" />
+          <img src="./brand_assets/photos/GLI_photo.webp" alt="GoTrans Logistics" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Business</div>
@@ -2041,7 +2044,7 @@
       <!-- Card 4 — bottom right -->
       <div class="news-card reveal">
         <div class="news-img-wrap">
-          <img src="./brand_assets/backgrounds/GOBEL_Digital Background_70yhWhite 1920x1080.jpg" alt="GOBEL Foundation" class="news-img" loading="lazy" decoding="async" />
+          <img src="./brand_assets/backgrounds/GOBEL_Digital_Background_70yhWhite.webp" alt="GOBEL Foundation" class="news-img" loading="lazy" decoding="async" />
         </div>
         <div class="news-body">
           <div class="news-cat">Sustainability</div>
@@ -2096,7 +2099,7 @@
 
       <div class="csr-top-right">
         <div class="csr-image-wrapper">
-          <img src="./brand_assets/photos/Food-Hospitality-Image.jpg" alt="GOBEL CSR — Community Empowerment" loading="lazy" decoding="async" />
+          <img src="./brand_assets/photos/Food-Hospitality-Image.webp" alt="GOBEL CSR — Community Empowerment" loading="lazy" decoding="async" />
         </div>
         <div class="csr-stats">
           <div class="csr-stat-item">
@@ -2171,15 +2174,15 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.png" alt="GOBEL Group" class="footer-logo" loading="lazy" decoding="async" />
+        <img src="./brand_assets/combinations/GOBEL70thLockupLogo_Horizontal.webp" alt="GOBEL Group" class="footer-logo" loading="lazy" decoding="async" />
         <p class="footer-tagline">
           <strong>GOBEL Group</strong><br />
           Seven decades of building Indonesia's industries, empowering communities, and shaping the nation's future.
         </p>
         <div class="footer-social">
-          <a href="#" class="social-btn" title="LinkedIn"><img src="./brand_assets/social_networks/Platform=LinkedIn, Color=Negative.png" alt="LinkedIn" /></a>
-          <a href="#" class="social-btn" title="Instagram"><img src="./brand_assets/social_networks/Platform=Instagram, Color=Negative.png" alt="Instagram" /></a>
-          <a href="#" class="social-btn" title="YouTube"><img src="./brand_assets/social_networks/Platform=YouTube, Color=Negative.png" alt="YouTube" /></a>
+          <a href="#" class="social-btn" title="LinkedIn"><img src="./brand_assets/social_networks/Platform=LinkedIn, Color=Negative.webp" alt="LinkedIn" /></a>
+          <a href="#" class="social-btn" title="Instagram"><img src="./brand_assets/social_networks/Platform=Instagram, Color=Negative.webp" alt="Instagram" /></a>
+          <a href="#" class="social-btn" title="YouTube"><img src="./brand_assets/social_networks/Platform=YouTube, Color=Negative.webp" alt="YouTube" /></a>
         </div>
       </div>
       <div>
@@ -2362,7 +2365,8 @@
     if (bars.length) barIO.observe(bars[0].closest('.csr-visual'));
   }
 
-  // ─── Hero Particles ───
+  // ─── Hero Particles (deferred — starts after page is interactive) ───
+  (window.requestIdleCallback || setTimeout)(function () {
   (function () {
     const canvas = document.getElementById('hero-particles');
     const ctx = canvas.getContext('2d');
@@ -2469,15 +2473,27 @@
     initCircles();
     particlesRaf = requestAnimationFrame(animate);
   })();
+  }); // end requestIdleCallback
 
 </script>
 
-<!-- ─── Cobe Interactive 3D Globe — 27 Indonesian provinces + arc connections ─── -->
+<!-- ─── Cobe Interactive 3D Globe — lazy-init when section is near viewport ─── -->
 <script type="module">
-  import createGlobe from 'https://esm.sh/cobe@0.6.3';
-
   const canvas = document.getElementById('gobel-globe');
   if (!canvas) throw new Error('Globe canvas not found');
+
+  let globeInitialized = false;
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !globeInitialized) {
+      globeInitialized = true;
+      observer.disconnect();
+      initGlobe();
+    }
+  }, { rootMargin: '200px' });
+  observer.observe(canvas);
+
+  async function initGlobe() {
+  const { default: createGlobe } = await import('https://esm.sh/cobe@0.6.3');
 
   const SIZE = 860;
   const DPR  = Math.min(window.devicePixelRatio || 1, 2);
@@ -2676,7 +2692,7 @@
     phi, theta,
     dark: 1,
     diffuse: 1.6,
-    mapSamples: 22000,
+    mapSamples: 12000,
     mapBrightness: 9,
     baseColor:   [0.12, 0.09, 0.05],
     markerColor: [0.85, 0.60, 0.20],
@@ -2730,6 +2746,7 @@
   }, { passive: true });
 
   window.addEventListener('beforeunload', () => globe.destroy());
+  } // end initGlobe
 </script>
 
 <!-- CSR section: animated green beams -->
